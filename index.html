@@ -6,396 +6,194 @@
 <title>第五大隊裝備汰換申請系統</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap');
-
   :root {
-    --red: #C62828;
-    --red-dark: #B71C1C;
-    --red-light: #E53935;
-    --red-bg: #FFF5F5;
-    --orange: #E65100;
-    --bg: #F5F6F8;
-    --surface: #FFFFFF;
-    --surface2: #F9FAFB;
-    --border: #E5E7EB;
-    --border-dark: #D1D5DB;
-    --text: #111827;
-    --text-secondary: #374151;
-    --text-muted: #6B7280;
-    --text-light: #9CA3AF;
-    --success: #16A34A;
-    --success-bg: #F0FDF4;
-    --success-border: #BBF7D0;
-    --warning: #D97706;
-    --warning-bg: #FFFBEB;
-    --warning-border: #FDE68A;
-    --danger-bg: #FEF2F2;
-    --danger-border: #FECACA;
-    --info: #1D4ED8;
-    --info-bg: #EFF6FF;
-    --info-border: #BFDBFE;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow: 0 4px 12px rgba(0,0,0,0.08);
-    --shadow-md: 0 8px 24px rgba(0,0,0,0.10);
+    --red:#C62828; --red-dark:#B71C1C; --red-light:#E53935; --red-bg:#FFF5F5;
+    --orange:#E65100;
+    --bg:#F5F6F8; --surface:#FFFFFF; --surface2:#F9FAFB;
+    --border:#E5E7EB; --border-dark:#D1D5DB;
+    --text:#111827; --text-secondary:#374151; --text-muted:#6B7280; --text-light:#9CA3AF;
+    --success:#16A34A; --success-bg:#F0FDF4; --success-border:#BBF7D0;
+    --warning:#D97706; --warning-bg:#FFFBEB; --warning-border:#FDE68A;
+    --danger-bg:#FEF2F2; --danger-border:#FECACA;
+    --info:#1D4ED8; --info-bg:#EFF6FF; --info-border:#BFDBFE;
+    --shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+    --shadow:0 4px 12px rgba(0,0,0,0.08);
+    --shadow-md:0 8px 24px rgba(0,0,0,0.10);
   }
-
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Noto Sans TC',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; font-size:14px; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:14px;}
 
   /* HEADER */
-  .header {
-    background:var(--surface);
-    border-bottom:1px solid var(--border);
-    padding:0 28px;
-    height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    position:sticky;
-    top:0;
-    z-index:100;
-    box-shadow:var(--shadow-sm);
-  }
-  .header-brand { display:flex; align-items:center; gap:10px; }
-  .header-icon { font-size:22px; }
-  .header-title { font-size:15px; font-weight:700; color:var(--text); letter-spacing:0.5px; }
-  .header-sub { font-size:10px; color:var(--text-muted); letter-spacing:1px; }
-  .header-nav { display:flex; gap:2px; }
-  .nav-btn {
-    background:transparent;
-    border:none;
-    color:var(--text-muted);
-    padding:7px 16px;
-    border-radius:6px;
-    cursor:pointer;
-    font-family:'Noto Sans TC',sans-serif;
-    font-size:13px;
-    font-weight:500;
-    transition:all 0.15s;
-    display:flex;
-    align-items:center;
-    gap:6px;
-  }
-  .nav-btn:hover { color:var(--text); background:var(--bg); }
-  .nav-btn.active { background:var(--red); color:#fff; }
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm);}
+  .header-brand{display:flex;align-items:center;gap:10px;}
+  .header-icon{font-size:22px;}
+  .header-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:0.5px;}
+  .header-sub{font-size:10px;color:var(--text-muted);letter-spacing:1px;}
+  .header-nav{display:flex;gap:2px;}
+  .nav-btn{background:transparent;border:none;color:var(--text-muted);padding:7px 16px;border-radius:6px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:13px;font-weight:500;transition:all 0.15s;display:flex;align-items:center;gap:6px;}
+  .nav-btn:hover{color:var(--text);background:var(--bg);}
+  .nav-btn.active{background:var(--red);color:#fff;}
 
   /* VIEWS */
-  .view { display:none; padding:32px 28px; max-width:860px; margin:0 auto; }
-  .view.active { display:block; }
-
-  .page-title { font-size:20px; font-weight:700; color:var(--text); margin-bottom:4px; }
-  .page-sub { font-size:13px; color:var(--text-muted); margin-bottom:28px; }
-  .divider { height:1px; background:var(--border); margin-bottom:28px; }
+  .view{display:none;padding:32px 28px;max-width:880px;margin:0 auto;}
+  .view.active{display:block;}
+  .page-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:4px;}
+  .page-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px;}
+  .divider{height:1px;background:var(--border);margin-bottom:28px;}
 
   /* CARD */
-  .card {
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:24px;
-    margin-bottom:16px;
-    box-shadow:var(--shadow-sm);
-  }
-  .card-title {
-    font-size:13px;
-    font-weight:600;
-    color:var(--text-secondary);
-    margin-bottom:18px;
-    display:flex;
-    align-items:center;
-    gap:7px;
-    padding-bottom:14px;
-    border-bottom:1px solid var(--border);
-  }
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+  .card-title{font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:18px;display:flex;align-items:center;gap:7px;padding-bottom:14px;border-bottom:1px solid var(--border);}
 
   /* FORM */
-  .form-row { margin-bottom:16px; }
-  .form-row:last-child { margin-bottom:0; }
-  .form-row label {
-    display:block;
-    font-size:13px;
-    font-weight:600;
-    color:var(--text-secondary);
-    margin-bottom:6px;
-  }
-  .form-row label .req { color:var(--red); margin-left:2px; }
-  .form-row input, .form-row select, .form-row textarea {
-    width:100%;
-    background:#fff;
-    border:1px solid var(--border-dark);
-    border-radius:6px;
-    color:var(--text);
-    font-family:'Noto Sans TC',sans-serif;
-    font-size:14px;
-    padding:10px 13px;
-    transition:border-color 0.15s, box-shadow 0.15s;
-    outline:none;
-    appearance:none;
-  }
-  .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-    border-color:var(--red);
-    box-shadow:0 0 0 3px rgba(198,40,40,0.10);
-  }
-  .form-row input::placeholder, .form-row textarea::placeholder { color:var(--text-light); }
-  .form-row textarea { resize:vertical; min-height:80px; }
-  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  @media(max-width:600px){ .form-grid { grid-template-columns:1fr; } }
+  .form-row{margin-bottom:16px;}
+  .form-row:last-child{margin-bottom:0;}
+  .form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;}
+  .form-row label .req{color:var(--red);margin-left:2px;}
+  .form-row input,.form-row select,.form-row textarea{width:100%;background:#fff;border:1px solid var(--border-dark);border-radius:6px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:14px;padding:10px 13px;transition:border-color 0.15s,box-shadow 0.15s;outline:none;appearance:none;}
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(198,40,40,0.10);}
+  .form-row input::placeholder,.form-row textarea::placeholder{color:var(--text-light);}
+  .form-row textarea{resize:vertical;min-height:80px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
 
   /* BADGES */
-  .inventory-badge {
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    padding:5px 12px;
-    border-radius:6px;
-    font-size:12px;
-    font-weight:600;
-    margin-top:8px;
-  }
-  .badge-ok   { background:var(--success-bg); color:var(--success); border:1px solid var(--success-border); }
-  .badge-low  { background:var(--warning-bg); color:var(--warning); border:1px solid var(--warning-border); }
-  .badge-out  { background:var(--danger-bg); color:var(--red-light); border:1px solid var(--danger-border); }
+  .inventory-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;margin-top:8px;}
+  .badge-ok{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);}
+  .badge-low{background:var(--warning-bg);color:var(--warning);border:1px solid var(--warning-border);}
+  .badge-out{background:var(--danger-bg);color:var(--red-light);border:1px solid var(--danger-border);}
 
   /* PHOTO UPLOAD */
-  .photo-upload {
-    border:2px dashed var(--border-dark);
-    border-radius:8px;
-    padding:28px;
-    text-align:center;
-    cursor:pointer;
-    transition:border-color 0.15s, background 0.15s;
-    position:relative;
-    background:var(--surface2);
-  }
-  .photo-upload:hover { border-color:var(--red); background:var(--red-bg); }
-  .photo-upload input { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
-  .photo-upload-icon { font-size:28px; margin-bottom:8px; }
-  .photo-upload-text { font-size:13px; color:var(--text-muted); }
-  .photo-preview { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-  .photo-thumb { width:68px; height:68px; object-fit:cover; border-radius:6px; border:1px solid var(--border); }
+  .photo-upload{border:2px dashed var(--border-dark);border-radius:8px;padding:28px;text-align:center;cursor:pointer;transition:border-color 0.15s,background 0.15s;position:relative;background:var(--surface2);}
+  .photo-upload:hover{border-color:var(--red);background:var(--red-bg);}
+  .photo-upload input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+  .photo-upload-icon{font-size:28px;margin-bottom:8px;}
+  .photo-upload-text{font-size:13px;color:var(--text-muted);}
+  .photo-upload-note{font-size:11px;color:var(--text-light);margin-top:5px;}
+  .photo-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .photo-thumb{width:68px;height:68px;object-fit:cover;border-radius:6px;border:1px solid var(--border);}
 
   /* BUTTONS */
-  .btn-primary {
-    background:var(--red);
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    padding:13px 32px;
-    font-family:'Noto Sans TC',sans-serif;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-    width:100%;
-    transition:all 0.15s;
-    box-shadow:0 2px 8px rgba(198,40,40,0.25);
-  }
-  .btn-primary:hover { background:var(--red-dark); box-shadow:0 4px 12px rgba(198,40,40,0.30); }
-  .btn-primary:active { transform:translateY(1px); }
-  .btn-sm {
-    background:var(--surface);
-    color:var(--text-secondary);
-    border:1px solid var(--border-dark);
-    border-radius:6px;
-    padding:6px 14px;
-    font-family:'Noto Sans TC',sans-serif;
-    font-size:12px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.15s;
-  }
-  .btn-sm:hover { border-color:var(--red); color:var(--red); }
-  .btn-sm-danger {
-    background:var(--danger-bg);
-    color:var(--red-light);
-    border:1px solid var(--danger-border);
-    border-radius:6px;
-    padding:6px 14px;
-    font-size:12px;
-    font-weight:600;
-    cursor:pointer;
-    transition:all 0.15s;
-    font-family:'Noto Sans TC',sans-serif;
-  }
-  .btn-sm-danger:hover { background:#FEE2E2; }
-  .btn-sm-success {
-    background:var(--success-bg);
-    color:var(--success);
-    border:1px solid var(--success-border);
-    border-radius:6px;
-    padding:6px 14px;
-    font-size:12px;
-    font-weight:600;
-    cursor:pointer;
-    transition:all 0.15s;
-    font-family:'Noto Sans TC',sans-serif;
-  }
-  .btn-sm-success:hover { background:#DCFCE7; }
+  .btn-primary{background:var(--red);color:#fff;border:none;border-radius:8px;padding:13px 32px;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all 0.15s;box-shadow:0 2px 8px rgba(198,40,40,0.25);}
+  .btn-primary:hover{background:var(--red-dark);}
+  .btn-primary:active{transform:translateY(1px);}
+  .btn-primary:disabled{opacity:0.6;cursor:not-allowed;}
+  .btn-sm{background:var(--surface);color:var(--text-secondary);border:1px solid var(--border-dark);border-radius:6px;padding:7px 16px;font-family:'Noto Sans TC',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+  .btn-sm:hover{border-color:var(--red);color:var(--red);}
+  .btn-sm:disabled{opacity:0.5;cursor:not-allowed;}
+  .btn-sync{background:var(--info);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:8px;}
+  .btn-sync:hover{background:#1e40af;}
+  .btn-sync:disabled{opacity:0.6;cursor:not-allowed;}
+  .btn-sm-danger{background:var(--danger-bg);color:var(--red-light);border:1px solid var(--danger-border);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Noto Sans TC',sans-serif;}
+  .btn-sm-danger:hover{background:#FEE2E2;}
+  .btn-sm-success{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Noto Sans TC',sans-serif;}
+  .btn-sm-success:hover{background:#DCFCE7;}
 
   /* TABLE */
-  .inv-table { width:100%; border-collapse:collapse; }
-  .inv-table th {
-    font-size:12px;
-    font-weight:600;
-    color:var(--text-muted);
-    text-align:left;
-    padding:10px 16px;
-    border-bottom:1px solid var(--border);
-    background:var(--surface2);
-    letter-spacing:0.3px;
-  }
-  .inv-table td { padding:13px 16px; border-bottom:1px solid var(--border); font-size:14px; vertical-align:middle; color:var(--text); }
-  .inv-table tr:last-child td { border-bottom:none; }
-  .inv-table tbody tr:hover td { background:#FAFAFA; }
-  .stock-num { font-size:18px; font-weight:700; }
-  .stock-ok  { color:var(--success); }
-  .stock-low { color:var(--warning); }
-  .stock-out { color:var(--red-light); }
+  .inv-table{width:100%;border-collapse:collapse;}
+  .inv-table th{font-size:12px;font-weight:600;color:var(--text-muted);text-align:left;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface2);}
+  .inv-table td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:middle;color:var(--text);}
+  .inv-table tr:last-child td{border-bottom:none;}
+  .inv-table tbody tr:hover td{background:#FAFAFA;}
+  .stock-num{font-size:18px;font-weight:700;}
+  .stock-ok{color:var(--success);} .stock-low{color:var(--warning);} .stock-out{color:var(--red-light);}
+
+  /* SIZE STOCK TABLE inside inventory management */
+  .size-stock-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .size-stock-item{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:5px 10px;}
+  .size-stock-label{font-size:12px;color:var(--text-muted);font-weight:500;min-width:36px;}
+  .size-stock-input{width:56px;border:1px solid var(--border-dark);border-radius:4px;padding:4px 6px;font-size:13px;font-weight:600;text-align:center;outline:none;background:#fff;color:var(--text);}
+  .size-stock-input:focus{border-color:var(--red);}
 
   /* REQUEST ITEMS */
-  .req-item {
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:16px 20px;
-    margin-bottom:10px;
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:16px;
-    box-shadow:var(--shadow-sm);
-  }
-  .req-item.approved { border-left:4px solid var(--success); }
-  .req-item.rejected { border-left:4px solid var(--red-light); }
-  .req-item.pending  { border-left:4px solid var(--warning); }
-  .req-name  { font-size:14px; font-weight:700; color:var(--text); margin-bottom:5px; }
-  .req-meta  { font-size:12px; color:var(--text-muted); display:flex; flex-wrap:wrap; gap:12px; margin-bottom:5px; }
-  .req-detail { font-size:13px; color:var(--text-secondary); margin-bottom:3px; }
+  .req-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:10px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;box-shadow:var(--shadow-sm);}
+  .req-item.approved{border-left:4px solid var(--success);}
+  .req-item.rejected{border-left:4px solid var(--red-light);}
+  .req-item.pending{border-left:4px solid var(--warning);}
+  .req-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;}
+  .req-meta{font-size:12px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:12px;margin-bottom:5px;}
+  .req-detail{font-size:13px;color:var(--text-secondary);margin-bottom:3px;}
 
-  .status-tag { font-size:11px; font-weight:600; padding:3px 10px; border-radius:4px; white-space:nowrap; }
-  .tag-pending  { background:var(--warning-bg); color:var(--warning); border:1px solid var(--warning-border); }
-  .tag-approved { background:var(--success-bg); color:var(--success); border:1px solid var(--success-border); }
-  .tag-rejected { background:var(--danger-bg); color:var(--red-light); border:1px solid var(--danger-border); }
-  .tag-nostock  { background:#FFF7ED; color:var(--orange); border:1px solid #FED7AA; }
+  .status-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;white-space:nowrap;}
+  .tag-pending{background:var(--warning-bg);color:var(--warning);border:1px solid var(--warning-border);}
+  .tag-approved{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);}
+  .tag-rejected{background:var(--danger-bg);color:var(--red-light);border:1px solid var(--danger-border);}
+  .tag-nostock{background:#FFF7ED;color:var(--orange);border:1px solid #FED7AA;}
 
   /* STATS */
-  .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
-  @media(max-width:700px){ .stats-grid { grid-template-columns:repeat(2,1fr); } }
-  .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; box-shadow:var(--shadow-sm); }
-  .stat-num   { font-size:30px; font-weight:700; line-height:1; margin-bottom:6px; }
-  .stat-label { font-size:11px; color:var(--text-muted); font-weight:500; }
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+  @media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat-num{font-size:30px;font-weight:700;line-height:1;margin-bottom:6px;}
+  .stat-label{font-size:11px;color:var(--text-muted);font-weight:500;}
 
   /* TOAST */
-  .toast {
-    position:fixed; bottom:28px; right:24px;
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:13px 18px;
-    font-size:13px;
-    font-weight:500;
-    color:var(--text);
-    z-index:999;
-    box-shadow:var(--shadow-md);
-    display:flex; align-items:center; gap:9px;
-    transform:translateY(70px); opacity:0;
-    transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    min-width:220px;
-  }
-  .toast.show   { transform:translateY(0); opacity:1; }
-  .toast.success { border-left:4px solid var(--success); }
-  .toast.warning { border-left:4px solid var(--warning); }
+  .toast{position:fixed;bottom:28px;right:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:13px 18px;font-size:13px;font-weight:500;color:var(--text);z-index:999;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:9px;transform:translateY(70px);opacity:0;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);min-width:220px;}
+  .toast.show{transform:translateY(0);opacity:1;}
+  .toast.success{border-left:4px solid var(--success);}
+  .toast.warning{border-left:4px solid var(--warning);}
 
   /* ADMIN GATE */
-  .admin-gate { display:flex; align-items:center; justify-content:center; min-height:360px; }
-  .admin-login {
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:40px;
-    width:340px;
-    text-align:center;
-    box-shadow:var(--shadow);
-  }
-  .admin-login h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
-  .admin-login p  { font-size:13px; color:var(--text-muted); margin-bottom:24px; }
+  .admin-gate{display:flex;align-items:center;justify-content:center;min-height:360px;}
+  .admin-login{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:40px;width:340px;text-align:center;box-shadow:var(--shadow);}
+  .admin-login h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .admin-login p{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
 
   /* FILTER */
-  .filter-bar { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
-  .filter-btn {
-    background:var(--surface);
-    border:1px solid var(--border-dark);
-    color:var(--text-muted);
-    padding:5px 16px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.15s;
-    font-family:'Noto Sans TC',sans-serif;
-  }
-  .filter-btn.active, .filter-btn:hover { border-color:var(--red); color:var(--red); background:var(--red-bg); }
+  .filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+  .filter-btn{background:var(--surface);border:1px solid var(--border-dark);color:var(--text-muted);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:'Noto Sans TC',sans-serif;}
+  .filter-btn.active,.filter-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-bg);}
 
-  /* INVENTORY EDIT */
-  .inv-edit-input {
-    background:var(--surface2);
-    border:1px solid var(--border-dark);
-    border-radius:6px;
-    color:var(--text);
-    font-size:15px;
-    font-weight:700;
-    width:72px;
-    padding:6px 10px;
-    text-align:center;
-    outline:none;
-    font-family:'Noto Sans TC',sans-serif;
-  }
-  .inv-edit-input:focus { border-color:var(--red); box-shadow:0 0 0 2px rgba(198,40,40,0.10); }
+  .note-input{background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:12px;padding:6px 10px;width:100%;outline:none;}
+  .note-input:focus{border-color:var(--info);}
+  .timestamp{font-size:11px;color:var(--text-light);}
+  .empty-state{text-align:center;padding:48px 24px;color:var(--text-muted);}
+  .empty-state .icon{font-size:36px;margin-bottom:12px;opacity:0.4;}
+  .empty-state p{font-size:13px;}
 
-  .note-input {
-    background:var(--surface2);
-    border:1px solid var(--border);
-    border-radius:6px;
-    color:var(--text);
-    font-family:'Noto Sans TC',sans-serif;
-    font-size:12px;
-    padding:6px 10px;
-    width:100%;
-    outline:none;
-  }
-  .note-input:focus { border-color:var(--info); }
+  /* SYNC BAR */
+  .sync-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--info-bg);border:1px solid var(--info-border);border-radius:10px;padding:14px 20px;margin-bottom:20px;flex-wrap:wrap;}
+  .sync-bar-left{display:flex;align-items:center;gap:10px;}
+  .sync-status-dot{width:9px;height:9px;border-radius:50%;background:#9CA3AF;flex-shrink:0;}
+  .sync-status-dot.connected{background:var(--success);box-shadow:0 0 0 3px var(--success-bg);}
+  .sync-status-dot.syncing{background:var(--info);animation:pulse 1s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+  .sync-status-text{font-size:13px;color:var(--info);font-weight:600;}
+  .sync-status-sub{font-size:11px;color:var(--text-muted);}
 
-  .timestamp { font-size:11px; color:var(--text-light); }
-  .empty-state { text-align:center; padding:48px 24px; color:var(--text-muted); }
-  .empty-state .icon { font-size:36px; margin-bottom:12px; opacity:0.4; }
-  .empty-state p { font-size:13px; }
+  /* CONFIG PANEL */
+  .config-panel{background:var(--info-bg);border:1px solid var(--info-border);border-radius:10px;padding:20px;margin-bottom:20px;}
+  .config-panel-title{font-size:13px;font-weight:600;color:var(--info);margin-bottom:14px;display:flex;align-items:center;gap:7px;}
+  .config-connected{background:var(--success-bg);border:1px solid var(--success-border);border-radius:6px;padding:10px 14px;font-size:13px;color:var(--success);display:flex;align-items:center;gap:8px;}
+  .config-url-input{width:100%;background:#fff;border:1px solid var(--info-border);border-radius:6px;color:var(--text);font-size:13px;padding:10px 12px;outline:none;font-family:'Noto Sans TC',sans-serif;}
+  .config-url-input:focus{border-color:var(--info);}
+  .config-hint{font-size:12px;color:var(--text-muted);margin-top:7px;line-height:1.7;}
 
-  /* SHEETS CONFIG */
-  .config-panel {
-    background:var(--info-bg);
-    border:1px solid var(--info-border);
-    border-radius:10px;
-    padding:20px;
-    margin-bottom:20px;
-  }
-  .config-panel-title { font-size:13px; font-weight:600; color:var(--info); margin-bottom:14px; display:flex; align-items:center; gap:7px; }
-  .config-connected { background:var(--success-bg); border:1px solid var(--success-border); border-radius:6px; padding:10px 14px; font-size:13px; color:var(--success); display:flex; align-items:center; gap:8px; }
-  .config-url-input { width:100%; background:#fff; border:1px solid var(--info-border); border-radius:6px; color:var(--text); font-size:12px; padding:10px 12px; outline:none; font-family:'Noto Sans TC',sans-serif; }
-  .config-url-input:focus { border-color:var(--info); }
-  .config-hint { font-size:12px; color:var(--text-muted); margin-top:7px; line-height:1.7; }
+  /* HISTORY SECTION */
+  .history-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;margin-bottom:10px;user-select:none;}
+  .history-toggle:hover{background:#F3F4F6;}
+  .history-toggle-label{font-size:13px;font-weight:600;color:var(--text-secondary);}
+  .history-toggle-arrow{font-size:12px;color:var(--text-muted);transition:transform 0.2s;}
+  .history-toggle.open .history-toggle-arrow{transform:rotate(180deg);}
+  .history-content{display:none;}
+  .history-content.open{display:block;}
+  .history-load-more{text-align:center;padding:10px;font-size:12px;color:var(--info);cursor:pointer;font-weight:500;}
+  .history-load-more:hover{text-decoration:underline;}
 
   /* SETUP GUIDE */
-  #setup-guide { font-size:13px; color:var(--text-secondary); line-height:1.8; }
-  #setup-guide .guide-block { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:12px; }
-  #setup-guide .guide-block h4 { font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px; }
-  code { background:#F3F4F6; border:1px solid var(--border); border-radius:4px; padding:2px 6px; font-size:12px; color:var(--red); font-family:monospace; }
-  .code-block { background:#1E293B; color:#94A3B8; border-radius:8px; padding:16px; margin-top:10px; font-family:monospace; font-size:11px; line-height:1.9; overflow-x:auto; white-space:pre; }
+  #setup-guide{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .guide-block{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px;}
+  .guide-block h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;}
+  code{background:#F3F4F6;border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:12px;color:var(--red);font-family:monospace;}
+  .code-block{background:#1E293B;color:#94A3B8;border-radius:8px;padding:16px;margin-top:10px;font-family:monospace;font-size:11px;line-height:1.9;overflow-x:auto;white-space:pre;}
 
-  ::-webkit-scrollbar { width:5px; }
-  ::-webkit-scrollbar-track { background:transparent; }
-  ::-webkit-scrollbar-thumb { background:var(--border-dark); border-radius:3px; }
-  ::-webkit-scrollbar-thumb:hover { background:var(--text-muted); }
+  ::-webkit-scrollbar{width:5px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--border-dark);border-radius:3px;}
 
-  .spin { display:inline-block; width:13px; height:13px; border:2px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:sp 0.7s linear infinite; vertical-align:middle; margin-right:6px; }
-  @keyframes sp { to { transform:rotate(360deg); } }
+  .spin{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+  .spin-dark{display:inline-block;width:13px;height:13px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--info);border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+  @keyframes sp{to{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
@@ -418,7 +216,7 @@
 <!-- ══ 申請 ══ -->
 <div class="view active" id="view-report">
   <div class="page-title">裝備汰換申請</div>
-  <div class="page-sub">請填寫以下資料，提交後由主管審核</div>
+  <div class="page-sub">請填寫以下資料，提交後由大隊承辦人審核</div>
   <div class="divider"></div>
 
   <div class="card">
@@ -469,8 +267,8 @@
         <option value="">-- 請選擇 --</option>
         <option>超過使用年限</option>
         <option>損壞無法修復</option>
-        <option>功能不足/規格過時</option>
-        <option>安全疑慮</option>
+        <option>遺失</option>
+        <option>尺寸不合</option>
         <option>其他</option>
       </select>
     </div>
@@ -482,6 +280,7 @@
       <input type="file" id="r-photos" accept="image/*" multiple onchange="previewPhotos(this)">
       <div class="photo-upload-icon">📸</div>
       <div class="photo-upload-text">點擊或拖曳上傳照片（可多張）</div>
+      <div class="photo-upload-note">📌 照片僅供本次表單預覽，如需長期存檔請另行上傳至 Google 雲端硬碟</div>
     </div>
     <div class="photo-preview" id="photo-preview"></div>
   </div>
@@ -492,16 +291,9 @@
 <!-- ══ 庫存查詢 ══ -->
 <div class="view" id="view-inventory">
   <div class="page-title">庫存查詢</div>
-  <div class="page-sub">目前各裝備可更換之庫存狀況</div>
+  <div class="page-sub">目前各裝備可更換之庫存狀況（點擊裝備可查看各尺寸/廠牌庫存）</div>
   <div class="divider"></div>
-  <div class="card" style="padding:0;overflow:hidden;">
-    <table class="inv-table">
-      <thead>
-        <tr><th>裝備名稱</th><th>庫存數量</th><th>狀態</th><th>最後更新</th></tr>
-      </thead>
-      <tbody id="inv-tbody"></tbody>
-    </table>
-  </div>
+  <div id="inv-cards"></div>
 </div>
 
 <!-- ══ 管理後台 ══ -->
@@ -523,36 +315,41 @@
     <div class="page-sub">庫存管理與申請審核</div>
     <div class="divider"></div>
 
+    <!-- 同步狀態列 -->
+    <div class="sync-bar" id="sync-bar">
+      <div class="sync-bar-left">
+        <div class="sync-status-dot" id="sync-dot"></div>
+        <div>
+          <div class="sync-status-text" id="sync-status-text">尚未連線 Google Sheets</div>
+          <div class="sync-status-sub" id="sync-status-sub">資料僅儲存於本機</div>
+        </div>
+      </div>
+      <button class="btn-sync" onclick="syncFromSheets()" id="sync-btn">
+        🔄 立即從雲端同步
+      </button>
+    </div>
+
     <!-- Google Sheets 設定 -->
-    <div class="config-panel" id="sheets-config">
-      <div class="config-panel-title">🔗 Google Sheets 同步設定</div>
+    <div class="config-panel">
+      <div class="config-panel-title">🔗 Google Sheets 連線設定</div>
       <div id="sheets-status-display"></div>
       <div style="margin-top:12px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px;">APPS SCRIPT WEB APP URL</div>
+        <div style="font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;">Apps Script 網址</div>
         <input class="config-url-input" id="sheets-url-input" placeholder="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
-        <div class="config-hint">
-          請先依照說明建立 Google Apps Script，取得網址後貼上，<span style="color:var(--warning)">儲存後即可雙向同步所有申請記錄與庫存。</span><br>
-          📄 詳細設定步驟請見下方「設定說明」卡片。
-        </div>
+        <div class="config-hint">設定後，所有人提交的申請都會即時寫入 Google Sheets，管理員點「從雲端同步」可讀取所有人的申請。詳細步驟請見下方說明。</div>
       </div>
       <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
         <button class="btn-sm" onclick="saveSheetsConfig()">💾 儲存網址</button>
         <button class="btn-sm" onclick="testSheetsConnection()" id="test-btn">🔌 測試連線</button>
-        <button class="btn-sm" onclick="syncFromSheets()" id="sync-btn">🔄 從雲端同步</button>
       </div>
     </div>
 
     <div class="stats-grid" id="admin-stats"></div>
 
-    <!-- 庫存管理 -->
+    <!-- 庫存管理（含分尺寸） -->
     <div class="card">
-      <div class="card-title">📦 庫存管理</div>
-      <div style="overflow-x:auto;">
-        <table class="inv-table">
-          <thead><tr><th>裝備名稱</th><th>庫存數量</th><th>操作</th></tr></thead>
-          <tbody id="admin-inv-tbody"></tbody>
-        </table>
-      </div>
+      <div class="card-title">📦 庫存管理（分尺寸/廠牌）</div>
+      <div id="admin-inv-content"></div>
     </div>
 
     <!-- 申請審核 -->
@@ -564,64 +361,78 @@
         <button class="filter-btn" onclick="filterRequests('approved',this)">已核准</button>
         <button class="filter-btn" onclick="filterRequests('rejected',this)">未核准</button>
       </div>
+      <!-- 最新 5 筆 -->
       <div id="requests-list"></div>
+      <!-- 歷史記錄（可收折） -->
+      <div id="history-section" style="margin-top:10px;display:none;">
+        <div class="history-toggle" id="history-toggle" onclick="toggleHistory()">
+          <span class="history-toggle-label">📁 歷史記錄 <span id="history-count" style="color:var(--text-muted);font-weight:400;"></span></span>
+          <span class="history-toggle-arrow">▼</span>
+        </div>
+        <div class="history-content" id="history-content">
+          <div id="history-list"></div>
+          <div class="history-load-more" id="history-load-more" onclick="loadMoreHistory()" style="display:none;">載入更多</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Apps Script 設定說明 -->
+    <!-- Apps Script 說明 -->
     <div class="card" id="setup-guide">
       <div class="card-title">📘 Google Sheets 設定說明</div>
       <div>
         <div class="guide-block">
-          <h4>步驟一：建立 Google 試算表</h4>
-          <div>1. 開啟 <a href="https://sheets.google.com" target="_blank" style="color:var(--info);">Google Sheets</a>，新增試算表</div>
-          <div>2. 將第一個工作表命名為 <code>申請記錄</code></div>
-          <div>3. 在 A1 開始依序填入欄位標題：<br>
-            <code>申請ID | 單位 | 姓名 | 裝備 | 規格 | 損壞描述 | 汰換原因 | 狀態 | 管理員備註 | 申請時間 | 審核時間</code>
-          </div>
-          <div>4. 再新增第二個工作表，命名為 <code>庫存</code></div>
-          <div>5. 在 A1 填入：<code>裝備ID | 裝備名稱 | 庫存數量 | 最後更新</code></div>
+          <h4>⚠️ 為什麼別人填的資料看不到？</h4>
+          <div>本系統使用瀏覽器的 localStorage 存放本機資料，<strong>A 電腦填的資料只在 A 電腦看得到</strong>。要讓管理員看到所有人的申請，必須設定 Google Sheets 作為共用後端。設定完成後，每次提交都會即時寫入 Sheets，管理員點「從雲端同步」即可看到所有人的資料。</div>
         </div>
         <div class="guide-block">
-          <h4>步驟二：建立 Apps Script</h4>
-          <div>1. 在試算表中點選「擴充功能」→「Apps Script」</div>
-          <div>2. 刪除預設程式碼，貼上以下 Script：</div>
-          <div class="code-block">
-const SS_ID = SpreadsheetApp.getActive().getId();
+          <h4>步驟一：建立 Google 試算表</h4>
+          <div>1. 前往 <a href="https://sheets.google.com" target="_blank" style="color:var(--info);">Google Sheets</a>，新增空白試算表</div>
+          <div>2. 將第一個工作表命名：<code>申請記錄</code></div>
+          <div>3. A1 開始填入標題：<code>申請ID | 單位 | 姓名 | 裝備 | 規格 | 損壞描述 | 汰換原因 | 狀態 | 管理員備註 | 申請時間 | 審核時間</code></div>
+          <div>4. 新增第二個工作表命名：<code>庫存</code></div>
+          <div>5. A1 填入：<code>規格ID | 裝備名稱 | 規格 | 庫存數量 | 最後更新</code></div>
+        </div>
+        <div class="guide-block">
+          <h4>步驟二：貼上 Apps Script</h4>
+          <div>在試算表點「擴充功能」→「Apps Script」，貼上以下程式碼：</div>
+          <div class="code-block">const SS_ID = SpreadsheetApp.getActive().getId();
 
 function doPost(e) {
   const data = JSON.parse(e.postData.contents);
   const ss = SpreadsheetApp.openById(SS_ID);
-  const action = data.action;
 
-  if (action === 'addRequest') {
-    const sh = ss.getSheetByName('申請記錄');
-    sh.appendRow([
+  if (data.action === 'addRequest') {
+    ss.getSheetByName('申請記錄').appendRow([
       data.id, data.unit, data.name, data.equipName,
       data.specs, data.condition, data.reason,
       '待審核', '', data.submittedAt, ''
     ]);
   }
-  if (action === 'updateRequest') {
+  if (data.action === 'updateRequest') {
     const sh = ss.getSheetByName('申請記錄');
     const rows = sh.getDataRange().getValues();
     for (let i = 1; i &lt; rows.length; i++) {
-      if (rows[i][0] === data.id) {
-        sh.getRange(i+1, 8).setValue(data.status);
-        sh.getRange(i+1, 9).setValue(data.note || '');
-        sh.getRange(i+1, 11).setValue(new Date().toLocaleString('zh-TW'));
+      if (rows[i][0] == data.id) {
+        sh.getRange(i+1,8).setValue(data.status==='approved'?'已核准':'未核准');
+        sh.getRange(i+1,9).setValue(data.note||'');
+        sh.getRange(i+1,11).setValue(new Date().toLocaleString('zh-TW'));
         break;
       }
     }
   }
-  if (action === 'updateStock') {
+  if (data.action === 'updateStock') {
     const sh = ss.getSheetByName('庫存');
     const rows = sh.getDataRange().getValues();
+    let found = false;
     for (let i = 1; i &lt; rows.length; i++) {
-      if (rows[i][0] === data.id) {
-        sh.getRange(i+1, 3).setValue(data.stock);
-        sh.getRange(i+1, 4).setValue(new Date().toLocaleString('zh-TW'));
-        break;
+      if (rows[i][0] == data.specId) {
+        sh.getRange(i+1,4).setValue(data.stock);
+        sh.getRange(i+1,5).setValue(new Date().toLocaleString('zh-TW'));
+        found = true; break;
       }
+    }
+    if (!found) {
+      sh.appendRow([data.specId, data.equipName, data.spec, data.stock, new Date().toLocaleString('zh-TW')]);
     }
   }
   return ContentService.createTextOutput(JSON.stringify({ok:true})).setMimeType(ContentService.MimeType.JSON);
@@ -630,35 +441,39 @@ function doPost(e) {
 function doGet(e) {
   const ss = SpreadsheetApp.openById(SS_ID);
   const action = e.parameter.action;
-  if (action === 'ping') {
-    return ContentService.createTextOutput(JSON.stringify({ok:true,msg:'連線成功'})).setMimeType(ContentService.MimeType.JSON);
-  }
+
+  if (action === 'ping')
+    return out({ok:true});
+
   if (action === 'getAll') {
-    const reqSh = ss.getSheetByName('申請記錄');
-    const invSh = ss.getSheetByName('庫存');
-    const reqRows = reqSh.getDataRange().getValues().slice(1);
-    const invRows = invSh.getDataRange().getValues().slice(1);
-    const requests = reqRows.filter(r=>r[0]).map(r => ({
-      id:r[0],unit:r[1],name:r[2],equipName:r[3],
-      specsStr:r[4],condition:r[5],reason:r[6],
-      status:r[7]||'pending',adminNote:r[8]||'',submittedAt:r[9]
-    }));
-    const inventory = invRows.filter(r=>r[0]).map(r => ({
-      id:r[0],name:r[1],stock:Number(r[2]),updated:r[3]
-    }));
-    return ContentService.createTextOutput(JSON.stringify({requests,inventory})).setMimeType(ContentService.MimeType.JSON);
+    const reqRows = ss.getSheetByName('申請記錄').getDataRange().getValues().slice(1);
+    const invRows = ss.getSheetByName('庫存').getDataRange().getValues().slice(1);
+    const toStatus = s => s==='已核准'?'approved':s==='未核准'?'rejected':'pending';
+    return out({
+      requests: reqRows.filter(r=>r[0]).map(r=>({
+        id:String(r[0]),unit:r[1],name:r[2],equipName:r[3],
+        specs:r[4],condition:r[5],reason:r[6],
+        status:toStatus(r[7]),adminNote:r[8]||'',submittedAt:r[9]
+      })),
+      stockRows: invRows.filter(r=>r[0]).map(r=>({
+        specId:String(r[0]),equipName:r[1],spec:r[2],stock:Number(r[3]),updated:r[4]
+      }))
+    });
   }
-  return ContentService.createTextOutput(JSON.stringify({ok:false})).setMimeType(ContentService.MimeType.JSON);
+  return out({ok:false});
+}
+
+function out(obj){
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }</div>
         </div>
         <div class="guide-block">
-          <h4>步驟三：部署為網頁應用程式</h4>
-          <div>1. 點右上角「部署」→「新增部署作業」</div>
-          <div>2. 類型選「網頁應用程式」</div>
-          <div>3. 執行身份選「<strong>我</strong>」，存取權選「<strong style="color:var(--red);">所有人</strong>」</div>
-          <div>4. 點「部署」，複製產生的網址貼到上方設定欄</div>
+          <h4>步驟三：部署</h4>
+          <div>1. 點「部署」→「新增部署作業」→ 類型選「網頁應用程式」</div>
+          <div>2. 執行身份：<strong>我</strong>　存取權：<strong style="color:var(--red);">所有人</strong></div>
+          <div>3. 點「部署」→ 複製網址 → 貼到上方設定欄 → 儲存</div>
           <div style="margin-top:10px;padding:10px 14px;background:var(--warning-bg);border:1px solid var(--warning-border);border-radius:6px;font-size:12px;color:var(--warning);">
-            ⚠️ 每次修改 Script 後需重新部署（管理現有部署 → 編輯 → 版本選「新版本」），才會生效。
+            ⚠️ 修改 Script 後必須重新部署（管理現有部署 → 編輯 → 版本選「新版本」）才會生效
           </div>
         </div>
       </div>
@@ -670,138 +485,92 @@ function doGet(e) {
 
 <script>
 // ══════════════════════════════════════════════
-//  裝備設定 — 注意：數量欄位已移除，由管理員在庫存管理中維護
+//  裝備設定（含尺寸/廠牌列表）
 // ══════════════════════════════════════════════
 const EQUIP_CONFIG = {
-  gloves: {
-    label:'消防手套',
-    fields:[{id:'size',label:'尺寸（號）',type:'select',req:true,
-      options:['7號','8號','9號','10號','11號','12號','13號']}]
-  },
-  boots: {
-    label:'消防鞋',
-    fields:[{id:'size',label:'尺寸（號）',type:'select',req:true,
-      options:['5號','6號','7號','8號','9號','10號','11號','12號','13號','14號']}]
-  },
-  hood: {
-    label:'頭套',
-    fields:[] // 無額外規格
-  },
-  necksafe: {
-    label:'護頸',
-    fields:[{id:'brand',label:'廠牌',type:'select',req:true,options:['MSA','盧森堡']}]
-  },
-  mask: {
-    label:'面罩眼鏡架',
-    fields:[{id:'brand',label:'廠牌',type:'select',req:true,options:['MSA','drager']}]
-  },
-  light: {
-    label:'胸燈',
-    fields:[]
-  },
-  helmet: {
-    label:'消防帽',
-    fields:[{id:'brand',label:'廠牌',type:'select',req:true,options:['MSA','盧森堡']}]
-  }
+  gloves:  { label:'消防手套',   specType:'size',  specs:['7號','8號','9號','10號','11號','12號','13號'] },
+  boots:   { label:'消防鞋',     specType:'size',  specs:['5號','6號','7號','8號','9號','10號','11號','12號','13號','14號'] },
+  hood:    { label:'頭套',       specType:'none',  specs:[] },
+  necksafe:{ label:'護頸',       specType:'brand', specs:['MSA','盧森堡'] },
+  mask:    { label:'面罩眼鏡架', specType:'brand', specs:['MSA','drager'] },
+  light:   { label:'胸燈',       specType:'none',  specs:[] },
+  helmet:  { label:'消防帽',     specType:'brand', specs:['MSA','盧森堡'] }
 };
 
-// ══════════════════════════════════════════════
-//  DATA STORE
-// ══════════════════════════════════════════════
-const STORAGE_KEY = 'fire5_v3';
-const ADMIN_PW = '2108';
+const SPEC_LABEL = { size:'尺寸（號）', brand:'廠牌', none:'' };
 
-function now(){
-  return new Date().toLocaleDateString('zh-TW')+' '+new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
+// ══════════════════════════════════════════════
+//  DATA STORE（本機快取）
+// ══════════════════════════════════════════════
+const STORAGE_KEY = 'fire5_v4';
+const ADMIN_PW = '2108';
+const SHEETS_KEY = 'fire5_sheets_url';
+
+function now(){ return new Date().toLocaleDateString('zh-TW')+' '+new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'}); }
+
+// 庫存結構：{ specId(equipId_spec), equipId, equipName, spec, stock, updated }
+function getDefaultInventory(){
+  const inv = [];
+  Object.entries(EQUIP_CONFIG).forEach(([id,cfg])=>{
+    if(cfg.specs.length===0){
+      inv.push({specId:id+'_ALL', equipId:id, equipName:cfg.label, spec:'', stock:0, updated:''});
+    } else {
+      cfg.specs.forEach(s=>inv.push({specId:id+'_'+s, equipId:id, equipName:cfg.label, spec:s, stock:0, updated:''}));
+    }
+  });
+  return inv;
 }
-function getDefaultDB(){
-  return {
-    inventory: Object.entries(EQUIP_CONFIG).map(([id,cfg])=>({id,name:cfg.label,stock:0,updated:''})),
-    requests:[]
-  };
-}
+
 function loadDB(){
-  try{const r=localStorage.getItem(STORAGE_KEY);if(r)return JSON.parse(r);}catch(e){}
-  return getDefaultDB();
+  try{ const r=localStorage.getItem(STORAGE_KEY); if(r) return JSON.parse(r); }catch(e){}
+  return { inventory: getDefaultInventory(), requests:[] };
 }
-function saveDB(db){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));}
+function saveDB(db){ localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); }
+function getSheetsUrl(){ return localStorage.getItem(SHEETS_KEY)||''; }
+function setSheetsUrl(u){ localStorage.setItem(SHEETS_KEY, u); }
 
 let DB = loadDB();
+// Ensure all specIds exist (in case new items added to config)
+const defaultInv = getDefaultInventory();
+defaultInv.forEach(di=>{
+  if(!DB.inventory.find(i=>i.specId===di.specId)) DB.inventory.push(di);
+});
 
 // ══════════════════════════════════════════════
-//  SHEETS CONFIG
+//  SHEETS API
 // ══════════════════════════════════════════════
-const SHEETS_KEY = 'fire5_sheets_url';
-function getSheetsUrl(){return localStorage.getItem(SHEETS_KEY)||'';}
-function setSheetsUrl(url){localStorage.setItem(SHEETS_KEY,url);}
-function isConnected(){return !!getSheetsUrl();}
-
-function saveSheetsConfig(){
-  const url = document.getElementById('sheets-url-input').value.trim();
-  if(!url){showToast('⚠️ 請輸入網址','warning');return;}
-  setSheetsUrl(url);
-  updateSheetsStatus();
-  showToast('✅ 網址已儲存','success');
-}
-
-function updateSheetsStatus(){
-  const el = document.getElementById('sheets-status-display');
-  const url = getSheetsUrl();
-  const inp = document.getElementById('sheets-url-input');
-  if(url){
-    inp.value = url;
-    el.innerHTML = `<div class="config-connected">✅ 已設定 Google Sheets 同步　<span style="font-family:'Share Tech Mono',monospace;font-size:11px;opacity:0.7;">${url.substring(0,60)}...</span></div>`;
-  } else {
-    el.innerHTML = `<div style="font-size:12px;color:var(--text-muted);padding:8px 0;">尚未設定，資料僅儲存於此裝置。</div>`;
-  }
-}
-
-async function testSheetsConnection(){
-  const url = getSheetsUrl();
-  if(!url){showToast('⚠️ 請先儲存 Apps Script 網址','warning');return;}
-  const btn = document.getElementById('test-btn');
-  btn.innerHTML = '<span class="spin"></span>測試中...';
-  btn.disabled = true;
-  try{
-    const r = await fetch(`${url}?action=ping`);
-    const d = await r.json();
-    if(d.ok) showToast('✅ 連線成功！Google Sheets 已就緒','success');
-    else showToast('❌ 連線失敗，請檢查 Script 設定','warning');
-  }catch(e){
-    showToast('❌ 無法連線，請確認網址正確並已部署','warning');
-  }
-  btn.innerHTML = '🔌 測試連線';
-  btn.disabled = false;
+async function pushToSheets(action, payload){
+  const url = getSheetsUrl(); if(!url) return;
+  try{ await fetch(url,{method:'POST',body:JSON.stringify({action,...payload})}); }
+  catch(e){ console.warn('Sheets push error',e); }
 }
 
 async function syncFromSheets(){
   const url = getSheetsUrl();
-  if(!url){showToast('⚠️ 尚未設定 Sheets 網址','warning');return;}
+  if(!url){ showToast('⚠️ 請先設定 Google Sheets 網址','warning'); return; }
   const btn = document.getElementById('sync-btn');
   btn.innerHTML = '<span class="spin"></span>同步中...';
   btn.disabled = true;
+  setSyncUI('syncing');
   try{
-    const r = await fetch(`${url}?action=getAll`);
+    const r = await fetch(`${url}?action=getAll&t=${Date.now()}`);
     const d = await r.json();
-    if(d.inventory && d.requests){
-      // Merge inventory (keep local structure, update stock from sheets)
-      d.inventory.forEach(si => {
-        const li = DB.inventory.find(i=>i.id===si.id);
-        if(li){ li.stock=si.stock; li.updated=si.updated||li.updated; }
+    if(d.requests !== undefined){
+      // 更新庫存
+      if(d.stockRows) d.stockRows.forEach(sr=>{
+        const li = DB.inventory.find(i=>i.specId===sr.specId);
+        if(li){ li.stock=sr.stock; li.updated=sr.updated||li.updated; }
       });
-      // Merge requests
-      d.requests.forEach(sr => {
-        const li = DB.requests.find(r=>r.id===sr.id);
-        if(li){
-          li.status = sr.status;
-          li.adminNote = sr.adminNote;
-        } else {
-          // Reconstruct local request object from sheets row
+      // 合併申請（以 Sheets 為主）
+      d.requests.forEach(sr=>{
+        const li = DB.requests.find(r=>r.id===String(sr.id));
+        if(li){ li.status=sr.status; li.adminNote=sr.adminNote||''; }
+        else {
+          const equipId = Object.keys(EQUIP_CONFIG).find(k=>EQUIP_CONFIG[k].label===sr.equipName)||'';
           DB.requests.push({
-            id:sr.id, unit:sr.unit, name:sr.name,
-            equipId: Object.keys(EQUIP_CONFIG).find(k=>EQUIP_CONFIG[k].label===sr.equipName)||'',
-            equipName:sr.equipName,
-            dynVals: parseSpecsStr(sr.specsStr, sr.equipName),
+            id:String(sr.id), unit:sr.unit, name:sr.name,
+            equipId, equipName:sr.equipName,
+            specsStr:sr.specs||'',
             condition:sr.condition, reason:sr.reason,
             status:sr.status||'pending',
             adminNote:sr.adminNote||'',
@@ -809,196 +578,204 @@ async function syncFromSheets(){
           });
         }
       });
-      // Sort requests by time desc
-      DB.requests.sort((a,b)=>b.id.localeCompare(a.id));
+      DB.requests.sort((a,b)=>String(b.id).localeCompare(String(a.id)));
       saveDB(DB);
       renderAdminPanel();
-      showToast('✅ 已從 Google Sheets 同步完成','success');
+      setSyncUI('connected', `最後同步：${now()}`);
+      showToast(`✅ 同步完成，共 ${d.requests.length} 筆申請`,'success');
     }
   }catch(e){
-    showToast('❌ 同步失敗，請確認連線','warning');
+    setSyncUI('error');
+    showToast('❌ 同步失敗，請確認 Sheets 設定','warning');
   }
-  btn.innerHTML = '🔄 從雲端同步';
+  btn.innerHTML = '🔄 立即從雲端同步';
   btn.disabled = false;
 }
 
-function parseSpecsStr(str, equipName){
-  if(!str) return {};
-  const result = {};
-  str.split('，').forEach(part => {
-    const [k,v] = part.split('：');
-    if(k==='尺寸') result.size=v;
-    if(k==='廠牌') result.brand=v;
-    if(k==='品項') result.brand=v;
-  });
-  return result;
+function setSyncUI(state, sub=''){
+  const dot=document.getElementById('sync-dot');
+  const text=document.getElementById('sync-status-text');
+  const s=document.getElementById('sync-status-sub');
+  dot.className='sync-status-dot';
+  if(state==='connected'){ dot.classList.add('connected'); text.textContent='已連線 Google Sheets'; }
+  else if(state==='syncing'){ dot.classList.add('syncing'); text.textContent='同步中...'; }
+  else if(state==='error'){ text.textContent='同步失敗'; }
+  else { text.textContent='尚未連線 Google Sheets'; }
+  if(s) s.textContent = sub || (getSheetsUrl()?'已設定網址':'資料僅儲存於本機');
 }
 
-async function pushToSheets(action, payload){
-  const url = getSheetsUrl();
-  if(!url) return; // silent fail if not configured
+function saveSheetsConfig(){
+  const url=document.getElementById('sheets-url-input').value.trim();
+  if(!url){showToast('⚠️ 請輸入網址','warning');return;}
+  setSheetsUrl(url);
+  updateSheetsStatus();
+  showToast('✅ 網址已儲存，請點「測試連線」驗證','success');
+}
+function updateSheetsStatus(){
+  const url=getSheetsUrl();
+  const el=document.getElementById('sheets-status-display');
+  const inp=document.getElementById('sheets-url-input');
+  if(url){
+    inp.value=url;
+    el.innerHTML=`<div class="config-connected">✅ 已設定：${url.substring(0,55)}...</div>`;
+    setSyncUI('connected');
+  } else {
+    el.innerHTML=`<div style="font-size:12px;color:var(--text-muted);padding:6px 0;">尚未設定</div>`;
+    setSyncUI('none');
+  }
+}
+async function testSheetsConnection(){
+  const url=getSheetsUrl(); if(!url){showToast('⚠️ 請先儲存網址','warning');return;}
+  const btn=document.getElementById('test-btn');
+  btn.innerHTML='<span class="spin-dark"></span>測試中...'; btn.disabled=true;
   try{
-    await fetch(url, {
-      method:'POST',
-      body: JSON.stringify({action, ...payload})
-    });
-  }catch(e){ console.warn('Sheets sync error:', e); }
+    const r=await fetch(`${url}?action=ping`); const d=await r.json();
+    if(d.ok) showToast('✅ 連線成功！','success');
+    else showToast('❌ Script 回應異常','warning');
+  }catch(e){ showToast('❌ 無法連線，請確認網址與部署設定','warning'); }
+  btn.innerHTML='🔌 測試連線'; btn.disabled=false;
 }
 
 // ══════════════════════════════════════════════
 //  NAV
 // ══════════════════════════════════════════════
-function switchView(view){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('view-'+view).classList.add('active');
-  document.getElementById('nav-'+view).classList.add('active');
-  if(view==='inventory') renderInventoryTable();
+function switchView(v){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  document.getElementById('nav-'+v).classList.add('active');
+  if(v==='inventory') renderInventoryCards();
 }
 
 // ══════════════════════════════════════════════
-//  DYNAMIC FIELDS（規格欄位，已無數量）
+//  申請表單
 // ══════════════════════════════════════════════
 function onEquipChange(){
-  const key = document.getElementById('r-equip').value;
-  checkStock();
-  renderDynamicFields(key);
+  const key=document.getElementById('r-equip').value;
+  checkStock(); renderDynamicFields(key);
 }
 
 function renderDynamicFields(key){
-  const wrap = document.getElementById('dynamic-fields');
-  if(!key||!EQUIP_CONFIG[key]||EQUIP_CONFIG[key].fields.length===0){wrap.innerHTML='';return;}
-  const fields = EQUIP_CONFIG[key].fields;
-  let html = `<div style="margin-top:16px;">`;
-  fields.forEach(f => {
-    let input = '';
-    if(f.type==='select'){
-      input=`<select id="df-${f.id}"><option value="">-- 請選擇 --</option>${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
-    } else {
-      input=`<input type="text" id="df-${f.id}" placeholder="請輸入${f.label}">`;
-    }
-    html+=`<div class="form-row"><label>${f.label}${f.req?'<span class="req"> *</span>':''}</label>${input}</div>`;
-  });
-  html+='</div>';
-  wrap.innerHTML = html;
+  const wrap=document.getElementById('dynamic-fields');
+  if(!key||!EQUIP_CONFIG[key]||EQUIP_CONFIG[key].specType==='none'){wrap.innerHTML='';return;}
+  const cfg=EQUIP_CONFIG[key];
+  const label=SPEC_LABEL[cfg.specType];
+  wrap.innerHTML=`<div style="margin-top:16px;"><div class="form-row">
+    <label>${label} <span class="req">*</span></label>
+    <select id="df-spec">
+      <option value="">-- 請選擇 --</option>
+      ${cfg.specs.map(s=>`<option>${s}</option>`).join('')}
+    </select>
+  </div></div>`;
 }
 
-function getDynVals(key){
-  if(!key||!EQUIP_CONFIG[key]) return {};
-  const r={};
-  EQUIP_CONFIG[key].fields.forEach(f=>{const el=document.getElementById('df-'+f.id);if(el)r[f.id]=el.value;});
-  return r;
-}
-
-function specsToStr(dynVals, equipId){
-  const cfg=EQUIP_CONFIG[equipId]; if(!cfg||!dynVals) return '';
-  return cfg.fields.map(f=>{const v=dynVals[f.id];return v?`${f.label}：${v}`:null;}).filter(Boolean).join('，');
+function getDynSpec(key){
+  if(!key||EQUIP_CONFIG[key].specType==='none') return '';
+  const el=document.getElementById('df-spec'); return el?el.value:'';
 }
 
 function checkStock(){
-  const key = document.getElementById('r-equip').value;
-  const el = document.getElementById('stock-indicator');
+  const key=document.getElementById('r-equip').value;
+  const el=document.getElementById('stock-indicator');
   if(!key){el.innerHTML='';return;}
-  const item = DB.inventory.find(i=>i.id===key);
-  if(!item){el.innerHTML='';return;}
-  const s=item.stock;
-  if(s===0) el.innerHTML=`<div class="inventory-badge badge-out">❌ 目前無庫存，申請後將排入候補</div>`;
-  else if(s<=2) el.innerHTML=`<div class="inventory-badge badge-low">⚠️ 庫存偏低：剩餘 ${s} 件</div>`;
-  else el.innerHTML=`<div class="inventory-badge badge-ok">✅ 庫存充足：剩餘 ${s} 件</div>`;
+  const cfg=EQUIP_CONFIG[key];
+  // If has spec, check after spec selected; show total for now
+  if(cfg.specType==='none'){
+    const item=DB.inventory.find(i=>i.specId===key+'_ALL');
+    const s=item?item.stock:0;
+    el.innerHTML=s===0?`<div class="inventory-badge badge-out">❌ 目前無庫存</div>`
+      :s<=2?`<div class="inventory-badge badge-low">⚠️ 庫存偏低：剩餘 ${s} 件</div>`
+           :`<div class="inventory-badge badge-ok">✅ 庫存充足：剩餘 ${s} 件</div>`;
+  } else {
+    const total=DB.inventory.filter(i=>i.equipId===key).reduce((a,b)=>a+b.stock,0);
+    el.innerHTML=total===0?`<div class="inventory-badge badge-out">❌ 全尺寸/廠牌庫存為零</div>`
+      :`<div class="inventory-badge badge-ok">ℹ️ 總庫存 ${total} 件（選擇規格後可查看各項庫存）</div>`;
+  }
 }
 
-// ══════════════════════════════════════════════
-//  PHOTOS
-// ══════════════════════════════════════════════
 function previewPhotos(input){
-  const preview=document.getElementById('photo-preview');
-  preview.innerHTML='';
-  Array.from(input.files).forEach(file=>{
-    const reader=new FileReader();
-    reader.onload=e=>{const img=document.createElement('img');img.src=e.target.result;img.className='photo-thumb';preview.appendChild(img);};
-    reader.readAsDataURL(file);
+  const p=document.getElementById('photo-preview'); p.innerHTML='';
+  Array.from(input.files).forEach(f=>{
+    const rd=new FileReader();
+    rd.onload=e=>{const img=document.createElement('img');img.src=e.target.result;img.className='photo-thumb';p.appendChild(img);};
+    rd.readAsDataURL(f);
   });
 }
 
-// ══════════════════════════════════════════════
-//  SUBMIT
-// ══════════════════════════════════════════════
 async function submitRequest(){
   const unit=document.getElementById('r-unit').value;
   const name=document.getElementById('r-name').value.trim();
   const equipKey=document.getElementById('r-equip').value;
   const condition=document.getElementById('r-condition').value.trim();
   const reason=document.getElementById('r-reason').value;
-
   if(!unit||!name||!equipKey||!condition||!reason){showToast('⚠️ 請填寫所有必填欄位','warning');return;}
 
   const cfg=EQUIP_CONFIG[equipKey];
-  const dynVals=getDynVals(equipKey);
-  for(const f of cfg.fields){
-    if(f.req&&!dynVals[f.id]){showToast(`⚠️ 請填寫「${f.label}」`,'warning');return;}
-  }
+  const spec=getDynSpec(equipKey);
+  if(cfg.specType!=='none'&&!spec){showToast(`⚠️ 請選擇「${SPEC_LABEL[cfg.specType]}」`,'warning');return;}
 
   const btn=document.getElementById('submit-btn');
-  btn.innerHTML='<span class="spin"></span>提交中...';
-  btn.disabled=true;
+  btn.innerHTML='<span class="spin"></span>提交中...'; btn.disabled=true;
 
+  const specsStr=spec?`${SPEC_LABEL[cfg.specType]}：${spec}`:'';
   const req={
     id:'req_'+Date.now(),
-    unit,name,
-    equipId:equipKey,
-    equipName:cfg.label,
-    dynVals,
-    condition,reason,
-    status:'pending',
-    adminNote:'',
-    submittedAt:now()
+    unit,name,equipId:equipKey,equipName:cfg.label,
+    specsStr, condition, reason,
+    status:'pending', adminNote:'', submittedAt:now()
   };
 
   DB.requests.unshift(req);
   saveDB(DB);
 
-  // Push to Google Sheets
   await pushToSheets('addRequest',{
-    id:req.id, unit, name,
-    equipName:cfg.label,
-    specs:specsToStr(dynVals,equipKey),
-    condition, reason,
-    submittedAt:req.submittedAt
+    id:req.id, unit, name, equipName:cfg.label,
+    specs:specsStr, condition, reason, submittedAt:req.submittedAt
   });
 
-  showToast('✅ 申請已成功提交，請等待主管審核','success');
-
+  showToast('✅ 申請已提交，由大隊承辦人審核','success');
   ['r-unit','r-name','r-equip','r-condition','r-reason'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('stock-indicator').innerHTML='';
   document.getElementById('dynamic-fields').innerHTML='';
   document.getElementById('photo-preview').innerHTML='';
   document.getElementById('r-photos').value='';
-
-  btn.innerHTML='📤 提交汰換申請';
-  btn.disabled=false;
+  btn.innerHTML='📤 提交汰換申請'; btn.disabled=false;
 }
 
 // ══════════════════════════════════════════════
-//  INVENTORY TABLE (public)
+//  庫存查詢頁（分尺寸卡片）
 // ══════════════════════════════════════════════
-function renderInventoryTable(){
-  const tbody=document.getElementById('inv-tbody');
-  tbody.innerHTML='';
-  DB.inventory.forEach(item=>{
-    const s=item.stock;
-    const cls=s===0?'stock-out':s<=2?'stock-low':'stock-ok';
-    const badge=s===0
-      ?'<span class="inventory-badge badge-out">無庫存</span>'
-      :s<=2?'<span class="inventory-badge badge-low">庫存偏低</span>'
-           :'<span class="inventory-badge badge-ok">庫存充足</span>';
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td><strong>${item.name}</strong></td><td><span class="stock-num ${cls}">${s}</span></td><td>${badge}</td><td><span class="timestamp">${item.updated||'—'}</span></td>`;
-    tbody.appendChild(tr);
+function renderInventoryCards(){
+  const wrap=document.getElementById('inv-cards'); wrap.innerHTML='';
+  Object.entries(EQUIP_CONFIG).forEach(([id,cfg])=>{
+    const items=DB.inventory.filter(i=>i.equipId===id);
+    const total=items.reduce((a,b)=>a+b.stock,0);
+    const totalCls=total===0?'stock-out':total<=3?'stock-low':'stock-ok';
+    let detail='';
+    if(cfg.specType!=='none'){
+      detail=`<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+        ${items.map(it=>{
+          const cls=it.stock===0?'stock-out':it.stock<=2?'stock-low':'stock-ok';
+          return `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 14px;text-align:center;">
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px;">${it.spec}</div>
+            <div class="stock-num ${cls}" style="font-size:16px;">${it.stock}</div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }
+    wrap.innerHTML+=`<div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:15px;font-weight:700;">${cfg.label}</span>
+        <span class="stock-num ${totalCls}" style="font-size:22px;">${total}</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">總庫存量</div>
+      ${detail}
+    </div>`;
   });
 }
 
 // ══════════════════════════════════════════════
-//  ADMIN
+//  管理後台
 // ══════════════════════════════════════════════
 function adminLogin(){
   if(document.getElementById('admin-pw').value===ADMIN_PW){
@@ -1006,6 +783,8 @@ function adminLogin(){
     document.getElementById('admin-content').style.display='block';
     updateSheetsStatus();
     renderAdminPanel();
+    // 有設定 Sheets 就自動同步
+    if(getSheetsUrl()) syncFromSheets();
   } else { showToast('❌ 密碼錯誤','warning'); }
 }
 
@@ -1019,124 +798,178 @@ function renderAdminStats(){
   const pending=DB.requests.filter(r=>r.status==='pending').length;
   const approved=DB.requests.filter(r=>r.status==='approved').length;
   const total=DB.inventory.reduce((a,b)=>a+b.stock,0);
-  const outOf=DB.inventory.filter(i=>i.stock===0).length;
+  const outOf=new Set(DB.inventory.filter(i=>i.stock===0).map(i=>i.equipId)).size;
   document.getElementById('admin-stats').innerHTML=`
     <div class="stat-card"><div class="stat-num" style="color:#D97706">${pending}</div><div class="stat-label">待審核申請</div></div>
     <div class="stat-card"><div class="stat-num" style="color:#16A34A">${approved}</div><div class="stat-label">已核准</div></div>
     <div class="stat-card"><div class="stat-num" style="color:#1D4ED8">${total}</div><div class="stat-label">總庫存量</div></div>
-    <div class="stat-card"><div class="stat-num" style="color:#C62828">${outOf}</div><div class="stat-label">缺貨裝備數</div></div>`;
+    <div class="stat-card"><div class="stat-num" style="color:#C62828">${outOf}</div><div class="stat-label">有缺貨裝備</div></div>`;
 }
 
 function renderAdminInventory(){
-  const tbody=document.getElementById('admin-inv-tbody');
-  tbody.innerHTML='';
-  DB.inventory.forEach(item=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td><strong>${item.name}</strong></td>
-      <td><input class="inv-edit-input" type="number" min="0" value="${item.stock}" id="si-${item.id}"></td>
-      <td><button class="btn-sm" style="padding:6px 14px;font-size:12px;" onclick="updateStock('${item.id}')">儲存</button></td>`;
-    tbody.appendChild(tr);
+  const wrap=document.getElementById('admin-inv-content'); wrap.innerHTML='';
+  Object.entries(EQUIP_CONFIG).forEach(([id,cfg])=>{
+    const items=DB.inventory.filter(i=>i.equipId===id);
+    let rows='';
+    if(cfg.specType==='none'){
+      const it=items[0]||{specId:id+'_ALL',stock:0};
+      rows=`<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
+        <span style="font-size:14px;font-weight:600;flex:1;">${cfg.label}</span>
+        <input class="size-stock-input" type="number" min="0" value="${it.stock}" id="inv-${it.specId}">
+        <button class="btn-sm" onclick="updateStock('${it.specId}','${id}','','${cfg.label}')">儲存</button>
+      </div>`;
+    } else {
+      const specRows=items.map(it=>`
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
+          <span style="width:72px;font-size:13px;color:var(--text-secondary);">${it.spec}</span>
+          <input class="size-stock-input" type="number" min="0" value="${it.stock}" id="inv-${it.specId}">
+          <button class="btn-sm" style="font-size:12px;padding:5px 12px;" onclick="updateStock('${it.specId}','${id}','${it.spec}','${cfg.label}')">儲存</button>
+        </div>`).join('');
+      rows=`<div style="padding:10px 0;border-bottom:1px solid var(--border);">
+        <div style="font-size:14px;font-weight:600;margin-bottom:8px;">${cfg.label}</div>
+        <div style="padding-left:8px;">${specRows}</div>
+      </div>`;
+    }
+    wrap.innerHTML+=rows;
   });
 }
 
-async function updateStock(id){
-  const val=document.getElementById('si-'+id).value;
-  const item=DB.inventory.find(i=>i.id===id);
-  if(item){
-    item.stock=parseInt(val)||0;
-    item.updated=now();
-    saveDB(DB);
-    renderAdminStats();
-    showToast('✅ 庫存已更新','success');
-    await pushToSheets('updateStock',{id,stock:item.stock});
-  }
+async function updateStock(specId, equipId, spec, equipName){
+  const val=document.getElementById('inv-'+specId).value;
+  const item=DB.inventory.find(i=>i.specId===specId);
+  if(item){ item.stock=parseInt(val)||0; item.updated=now(); saveDB(DB); renderAdminStats(); }
+  showToast('✅ 庫存已更新','success');
+  await pushToSheets('updateStock',{specId, equipName, spec, stock:parseInt(val)||0});
 }
 
+// ── 申請列表（最新5筆 + 歷史收折）──
+let historyPage=0;
+const RECENT_COUNT=5, HISTORY_PAGE=10;
 let currentFilter='all';
+
 function filterRequests(filter,btn){
-  currentFilter=filter;
+  currentFilter=filter; historyPage=0;
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderAdminRequests(filter);
 }
 
-function fmtDyn(dynVals,equipId){
-  const cfg=EQUIP_CONFIG[equipId]; if(!cfg||!dynVals) return '';
-  return cfg.fields.map(f=>{const v=dynVals[f.id];return v?`${f.label}：${v}`:null;}).filter(Boolean).join('　');
+function renderAdminRequests(filter){
+  let items=[...DB.requests];
+  if(filter!=='all') items=items.filter(r=>r.status===filter);
+
+  const recent=items.slice(0,RECENT_COUNT);
+  const older=items.slice(RECENT_COUNT);
+
+  // Render recent
+  const list=document.getElementById('requests-list');
+  if(recent.length===0&&older.length===0){
+    list.innerHTML=`<div class="empty-state"><div class="icon">📭</div><p>目前沒有符合條件的申請<br><small style="font-size:11px;">若已設定 Sheets，請點「立即從雲端同步」</small></p></div>`;
+  } else {
+    list.innerHTML=recent.map(r=>renderReqItem(r)).join('');
+  }
+
+  // History section
+  const hsec=document.getElementById('history-section');
+  if(older.length>0){
+    hsec.style.display='block';
+    document.getElementById('history-count').textContent=`（${older.length} 筆）`;
+    renderHistoryPage(older);
+  } else { hsec.style.display='none'; }
 }
 
-function renderAdminRequests(filter){
-  const list=document.getElementById('requests-list');
-  let items=DB.requests;
-  if(filter!=='all') items=items.filter(r=>r.status===filter);
-  if(items.length===0){list.innerHTML=`<div class="empty-state"><div class="icon">📭</div><p>目前沒有符合條件的申請</p></div>`;return;}
-  list.innerHTML=items.map(r=>{
-    const inv=DB.inventory.find(i=>i.id===r.equipId);
-    const stockAvail=inv&&inv.stock>0;
-    const stockTag=r.status==='pending'
-      ?(stockAvail?`<span class="status-tag" style="background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);">庫存 ${inv.stock} 件</span>`:`<span class="status-tag tag-nostock">無庫存</span>`):'';
-    const statusTag=r.status==='approved'
-      ?`<span class="status-tag tag-approved">✅ 已核准</span>`
-      :r.status==='rejected'?`<span class="status-tag tag-rejected">❌ 未核准</span>`:`<span class="status-tag tag-pending">⏳ 待審核</span>`;
-    const actions=r.status==='pending'?`
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn-sm-success" onclick="approveRequest('${r.id}')">核准</button>
-        <button class="btn-sm-danger" onclick="rejectRequest('${r.id}')">不核准</button>
-      </div>`:'';
-    const dynStr=fmtDyn(r.dynVals,r.equipId);
-    return `
-      <div class="req-item ${r.status}">
-        <div style="flex:1;min-width:0;">
-          <div class="req-name">🪖 ${r.equipName}</div>
-          <div class="req-meta">
-            <span>🏢 ${r.unit}</span>
-            <span>👤 ${r.name}</span>
-            <span class="timestamp">${r.submittedAt}</span>
-          </div>
-          ${dynStr?`<div class="req-detail">📐 ${dynStr}</div>`:''}
-          <div class="req-detail">原因：${r.reason}</div>
-          <div class="req-detail" style="color:var(--text-muted);">${r.condition}</div>
-          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">${statusTag}${stockTag}</div>
-          <div style="margin-top:8px;">
-            <input class="note-input" style="max-width:360px;" placeholder="管理員備註..."
-              value="${(r.adminNote||'').replace(/"/g,'&quot;')}"
-              onchange="saveNote('${r.id}',this.value)">
-          </div>
-        </div>
-        <div>${actions}</div>
-      </div>`;
-  }).join('');
+function renderHistoryPage(older){
+  const show=older.slice(0, (historyPage+1)*HISTORY_PAGE);
+  document.getElementById('history-list').innerHTML=show.map(r=>renderReqItem(r)).join('');
+  const lm=document.getElementById('history-load-more');
+  lm.style.display=show.length<older.length?'block':'none';
+}
+
+let _olderCache=[];
+function loadMoreHistory(){
+  historyPage++;
+  let items=[...DB.requests];
+  if(currentFilter!=='all') items=items.filter(r=>r.status===currentFilter);
+  renderHistoryPage(items.slice(RECENT_COUNT));
+}
+
+function toggleHistory(){
+  const toggle=document.getElementById('history-toggle');
+  const content=document.getElementById('history-content');
+  toggle.classList.toggle('open');
+  content.classList.toggle('open');
+
+  // First open: render
+  if(content.classList.contains('open')&&document.getElementById('history-list').innerHTML===''){
+    let items=[...DB.requests];
+    if(currentFilter!=='all') items=items.filter(r=>r.status===currentFilter);
+    renderHistoryPage(items.slice(RECENT_COUNT));
+  }
+}
+
+function renderReqItem(r){
+  const inv=DB.inventory.filter(i=>i.equipId===r.equipId);
+  const total=inv.reduce((a,b)=>a+b.stock,0);
+  const stockTag=r.status==='pending'
+    ?(total>0?`<span class="status-tag" style="background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);">庫存 ${total} 件</span>`
+             :`<span class="status-tag tag-nostock">無庫存</span>`):'';
+  const statusTag=r.status==='approved'?`<span class="status-tag tag-approved">✅ 已核准</span>`
+    :r.status==='rejected'?`<span class="status-tag tag-rejected">❌ 未核准</span>`
+    :`<span class="status-tag tag-pending">⏳ 待審核</span>`;
+  const actions=r.status==='pending'?`
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+      <button class="btn-sm-success" onclick="approveRequest('${r.id}')">核准</button>
+      <button class="btn-sm-danger" onclick="rejectRequest('${r.id}')">不核准</button>
+    </div>`:'';
+  return `<div class="req-item ${r.status}">
+    <div style="flex:1;min-width:0;">
+      <div class="req-name">🪖 ${r.equipName}</div>
+      <div class="req-meta">
+        <span>🏢 ${r.unit}</span><span>👤 ${r.name}</span>
+        <span class="timestamp">${r.submittedAt}</span>
+      </div>
+      ${r.specsStr?`<div class="req-detail">📐 ${r.specsStr}</div>`:''}
+      <div class="req-detail">原因：${r.reason}</div>
+      <div class="req-detail" style="color:var(--text-muted);">${r.condition}</div>
+      <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">${statusTag}${stockTag}</div>
+      <div style="margin-top:8px;">
+        <input class="note-input" style="max-width:380px;" placeholder="承辦人備註..."
+          value="${(r.adminNote||'').replace(/"/g,'&quot;')}"
+          onchange="saveNote('${r.id}',this.value)">
+      </div>
+      ${actions}
+    </div>
+  </div>`;
 }
 
 async function approveRequest(id){
   const req=DB.requests.find(r=>r.id===id); if(!req)return;
   req.status='approved';
-  const item=DB.inventory.find(i=>i.id===req.equipId);
-  if(item&&item.stock>0){item.stock=Math.max(0,item.stock-1);item.updated=now();}
-  saveDB(DB);
-  renderAdminPanel();
-  showToast('✅ 已核准，庫存自動扣除','success');
+  // 扣庫存（僅有尺寸/廠牌時，需有規格才能精確扣）
+  if(req.specsStr){
+    const parts=req.specsStr.split('：'); const specVal=parts[1]||'';
+    const key=req.equipId+'_'+specVal;
+    const item=DB.inventory.find(i=>i.specId===key);
+    if(item&&item.stock>0){ item.stock--; item.updated=now(); await pushToSheets('updateStock',{specId:item.specId,equipName:item.equipName,spec:item.spec,stock:item.stock}); }
+  } else {
+    const item=DB.inventory.find(i=>i.equipId===req.equipId);
+    if(item&&item.stock>0){ item.stock--; item.updated=now(); await pushToSheets('updateStock',{specId:item.specId,equipName:item.equipName,spec:item.spec,stock:item.stock}); }
+  }
+  saveDB(DB); renderAdminPanel();
+  showToast('✅ 已核准，庫存已扣除','success');
   await pushToSheets('updateRequest',{id,status:'approved',note:req.adminNote||''});
-  if(item) await pushToSheets('updateStock',{id:item.id,stock:item.stock});
 }
 
 async function rejectRequest(id){
   const req=DB.requests.find(r=>r.id===id); if(!req)return;
-  req.status='rejected';
-  saveDB(DB);
-  renderAdminPanel();
+  req.status='rejected'; saveDB(DB); renderAdminPanel();
   showToast('❌ 已標記為不核准','warning');
   await pushToSheets('updateRequest',{id,status:'rejected',note:req.adminNote||''});
 }
 
 async function saveNote(id,note){
   const req=DB.requests.find(r=>r.id===id);
-  if(req){
-    req.adminNote=note;
-    saveDB(DB);
-    await pushToSheets('updateRequest',{id,status:req.status,note});
-  }
+  if(req){ req.adminNote=note; saveDB(DB); await pushToSheets('updateRequest',{id,status:req.status,note}); }
 }
 
 // ══════════════════════════════════════════════
@@ -1148,7 +981,7 @@ function showToast(msg,type='success'){
   document.getElementById('toast-msg').textContent=msg;
   t.className='toast show '+type;
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),3200);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3500);
 }
 </script>
 </body>
