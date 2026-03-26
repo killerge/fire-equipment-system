@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五大隊裝備汰換申請系統</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&display=swap');
+
+  :root {
+    --red:#D32F2F; --red-dark:#B71C1C; --red-light:#EF5350;
+    --orange:#FF6D00;
+    --dark:#0A0A0A; --dark2:#141414; --dark3:#1E1E1E; --dark4:#2A2A2A;
+    --steel:#37474F;
+    --text:#ECEFF1; --text-dim:#90A4AE; --text-muted:#546E7A;
+    --border:rgba(255,255,255,0.08);
+    --success:#00C853; --warning:#FFD600; --info:#0091EA;
+    --shadow:0 4px 24px rgba(0,0,0,0.6);
+    --shadow-red:0 4px 24px rgba(211,47,47,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans TC',sans-serif;background:var(--dark);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+  .header{background:var(--dark2);border-bottom:2px solid var(--red);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(211,47,47,0.2);}
+  .header-brand{display:flex;align-items:center;gap:12px;}
+  .header-icon{font-size:26px;filter:drop-shadow(0 0 8px rgba(211,47,47,0.8));}
+  .header-title{font-size:15px;font-weight:900;letter-spacing:3px;}
+  .header-sub{font-size:9px;color:var(--text-muted);letter-spacing:3px;font-family:'Share Tech Mono',monospace;}
+  .header-nav{display:flex;gap:4px;}
+  .nav-btn{background:transparent;border:1px solid transparent;color:var(--text-dim);padding:7px 14px;border-radius:4px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:13px;font-weight:500;letter-spacing:1px;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+  .nav-btn:hover{color:var(--text);border-color:var(--border);background:var(--dark3);}
+  .nav-btn.active{background:var(--red);color:white;border-color:var(--red);box-shadow:var(--shadow-red);}
+
+  .view{display:none;padding:32px 24px;max-width:920px;margin:0 auto;}
+  .view.active{display:block;}
+  .section-heading{display:flex;align-items:baseline;gap:12px;margin-bottom:28px;}
+  .section-heading h2{font-size:22px;font-weight:900;letter-spacing:2px;}
+  .section-heading span{font-size:11px;color:var(--text-muted);letter-spacing:3px;font-family:'Share Tech Mono',monospace;}
+  .divider-red{height:2px;background:linear-gradient(90deg,var(--red) 0%,transparent 100%);margin-bottom:28px;}
+
+  .card{background:var(--dark2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:20px;}
+  .card-title{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .card-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  .form-row{margin-bottom:18px;}
+  .form-row:last-child{margin-bottom:0;}
+  .form-row label{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px;text-transform:uppercase;}
+  .form-row label .req{color:var(--red);margin-left:3px;}
+  .form-row input,.form-row select,.form-row textarea{width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:14px;padding:11px 14px;transition:border-color 0.2s,box-shadow 0.2s;outline:none;appearance:none;}
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(211,47,47,0.15);}
+  .form-row textarea{resize:vertical;min-height:80px;}
+  .form-row select option{background:var(--dark3);}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+
+  .inventory-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-top:8px;}
+  .badge-ok{background:rgba(0,200,83,0.15);color:var(--success);border:1px solid rgba(0,200,83,0.3);}
+  .badge-low{background:rgba(255,214,0,0.15);color:var(--warning);border:1px solid rgba(255,214,0,0.3);}
+  .badge-out{background:rgba(211,47,47,0.15);color:var(--red-light);border:1px solid rgba(211,47,47,0.3);}
+
+  .photo-upload{border:2px dashed var(--border);border-radius:6px;padding:24px;text-align:center;cursor:pointer;transition:border-color 0.2s;position:relative;}
+  .photo-upload:hover{border-color:var(--red);}
+  .photo-upload input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+  .photo-upload-icon{font-size:28px;margin-bottom:8px;}
+  .photo-upload-text{font-size:13px;color:var(--text-dim);}
+  .photo-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .photo-thumb{width:64px;height:64px;object-fit:cover;border-radius:4px;border:1px solid var(--border);}
+
+  .btn-primary{background:var(--red);color:white;border:none;border-radius:4px;padding:14px 32px;font-family:'Noto Sans TC',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px;cursor:pointer;width:100%;transition:all 0.2s;box-shadow:var(--shadow-red);}
+  .btn-primary:hover{background:var(--red-dark);transform:translateY(-1px);}
+  .btn-primary:active{transform:translateY(0);}
+  .btn-sm{background:var(--dark3);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 14px;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;}
+  .btn-sm:hover{border-color:var(--red);color:var(--red-light);}
+  .btn-sm-danger{background:rgba(211,47,47,0.1);color:var(--red-light);border:1px solid rgba(211,47,47,0.3);border-radius:4px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;}
+  .btn-sm-danger:hover{background:rgba(211,47,47,0.25);}
+  .btn-sm-success{background:rgba(0,200,83,0.15);color:var(--success);border:1px solid rgba(0,200,83,0.4);border-radius:4px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;}
+  .btn-sm-success:hover{background:rgba(0,200,83,0.3);}
+
+  .inv-table{width:100%;border-collapse:collapse;}
+  .inv-table th{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--dark3);}
+  .inv-table td{padding:13px 14px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:middle;}
+  .inv-table tr:last-child td{border-bottom:none;}
+  .inv-table tr:hover td{background:rgba(255,255,255,0.02);}
+  .stock-num{font-family:'Share Tech Mono',monospace;font-size:18px;font-weight:700;}
+  .stock-ok{color:var(--success);} .stock-low{color:var(--warning);} .stock-out{color:var(--red-light);}
+
+  .req-item{background:var(--dark3);border:1px solid var(--border);border-radius:6px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+  .req-item.approved{border-left:3px solid var(--success);}
+  .req-item.rejected{border-left:3px solid var(--red);}
+  .req-item.pending{border-left:3px solid var(--warning);}
+  .req-name{font-size:15px;font-weight:700;margin-bottom:5px;}
+  .req-meta{font-size:12px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:12px;margin-bottom:4px;}
+  .req-detail{font-size:13px;color:var(--text-dim);margin-bottom:3px;}
+  .req-actions{display:flex;gap:8px;flex-shrink:0;flex-direction:column;align-items:flex-end;}
+
+  .status-tag{font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:3px;white-space:nowrap;}
+  .tag-pending{background:rgba(255,214,0,0.15);color:var(--warning);}
+  .tag-approved{background:rgba(0,200,83,0.15);color:var(--success);}
+  .tag-rejected{background:rgba(211,47,47,0.15);color:var(--red-light);}
+  .tag-nostock{background:rgba(255,109,0,0.15);color:var(--orange);}
+
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;}
+  @media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+  .stat-card{background:var(--dark2);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;}
+  .stat-num{font-family:'Share Tech Mono',monospace;font-size:32px;font-weight:700;line-height:1;margin-bottom:6px;}
+  .stat-label{font-size:11px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
+
+  .toast{position:fixed;bottom:32px;right:24px;background:var(--dark2);border:1px solid var(--red);border-radius:6px;padding:14px 20px;font-size:14px;z-index:999;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;transform:translateY(80px);opacity:0;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+  .toast.show{transform:translateY(0);opacity:1;}
+  .toast.success{border-color:var(--success);}
+  .toast.warning{border-color:var(--warning);}
+
+  .admin-gate{display:flex;align-items:center;justify-content:center;min-height:340px;}
+  .admin-login{background:var(--dark2);border:1px solid var(--border);border-radius:8px;padding:40px;width:320px;text-align:center;}
+  .admin-login h3{font-size:16px;letter-spacing:2px;margin-bottom:6px;}
+  .admin-login p{font-size:12px;color:var(--text-muted);margin-bottom:24px;}
+
+  .filter-bar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+  .filter-btn{background:var(--dark3);border:1px solid var(--border);color:var(--text-dim);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;}
+  .filter-btn.active,.filter-btn:hover{border-color:var(--red);color:var(--red-light);background:rgba(211,47,47,0.08);}
+
+  .inv-edit-input{background:var(--dark4);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:16px;font-weight:700;width:70px;padding:6px 10px;text-align:center;outline:none;}
+  .inv-edit-input:focus{border-color:var(--red);}
+  .note-input{background:var(--dark4);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:12px;padding:6px 10px;width:100%;outline:none;}
+  .note-input:focus{border-color:var(--info);}
+  .timestamp{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text-muted);}
+  .empty-state{text-align:center;padding:48px 24px;color:var(--text-muted);}
+  .empty-state .icon{font-size:40px;margin-bottom:12px;opacity:0.5;}
+  .empty-state p{font-size:13px;letter-spacing:1px;}
+
+  /* SHEETS CONFIG PANEL */
+  .config-panel{background:rgba(0,145,234,0.07);border:1px solid rgba(0,145,234,0.25);border-radius:8px;padding:20px;margin-bottom:20px;}
+  .config-panel-title{font-size:12px;font-weight:700;letter-spacing:2px;color:#4FC3F7;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .config-connected{background:rgba(0,200,83,0.1);border:1px solid rgba(0,200,83,0.3);border-radius:6px;padding:10px 14px;font-size:13px;color:var(--success);display:flex;align-items:center;gap:8px;}
+  .config-url-input{width:100%;background:var(--dark3);border:1px solid rgba(0,145,234,0.3);border-radius:4px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:12px;padding:10px 12px;outline:none;}
+  .config-url-input:focus{border-color:var(--info);}
+  .config-hint{font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.6;}
+  .config-hint a{color:#4FC3F7;text-decoration:none;}
+  .config-hint a:hover{text-decoration:underline;}
+
+  ::-webkit-scrollbar{width:6px;}
+  ::-webkit-scrollbar-track{background:var(--dark2);}
+  ::-webkit-scrollbar-thumb{background:var(--steel);border-radius:3px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--red);}
+
+  /* Spinner */
+  .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.2);border-top-color:white;border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+  @keyframes sp{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">
+    <span class="header-icon">🔥</span>
+    <div>
+      <div class="header-title">第五大隊裝備汰換申請系統</div>
+      <div class="header-sub">EQUIPMENT REPLACEMENT MANAGEMENT</div>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <button class="nav-btn active" onclick="switchView('report')" id="nav-report">📋 申請</button>
+    <button class="nav-btn" onclick="switchView('inventory')" id="nav-inventory">📦 庫存查詢</button>
+    <button class="nav-btn" onclick="switchView('admin')" id="nav-admin">🔐 管理後台</button>
+  </nav>
+</div>
+
+<!-- ══ 申請 ══ -->
+<div class="view active" id="view-report">
+  <div class="section-heading">
+    <h2>裝備汰換申請</h2>
+    <span>REPLACEMENT REQUEST</span>
+  </div>
+  <div class="divider-red"></div>
+
+  <div class="card">
+    <div class="card-title">📋 基本資料</div>
+    <div class="form-grid">
+      <div class="form-row">
+        <label>所屬單位 <span class="req">*</span></label>
+        <select id="r-unit">
+          <option value="">-- 請選擇單位 --</option>
+          <option>大隊部</option><option>土城中隊</option><option>樹林中隊</option>
+          <option>三鶯中隊</option><option>清水分隊</option><option>土城分隊</option>
+          <option>頂埔分隊</option><option>樹潭分隊</option><option>樹林分隊</option>
+          <option>柑園分隊</option><option>隆恩分隊</option><option>三峽分隊</option>
+          <option>鶯歌分隊</option><option>鳳鳴分隊</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>填寫人姓名 <span class="req">*</span></label>
+        <input type="text" id="r-name" placeholder="請輸入姓名">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🪖 裝備資訊</div>
+    <div class="form-row">
+      <label>裝備名稱 <span class="req">*</span></label>
+      <select id="r-equip" onchange="onEquipChange()">
+        <option value="">-- 請選擇裝備 --</option>
+        <option value="gloves">消防手套</option>
+        <option value="boots">消防鞋</option>
+        <option value="hood">頭套</option>
+        <option value="necksafe">護頸</option>
+        <option value="mask">面罩眼鏡架</option>
+        <option value="light">胸燈</option>
+        <option value="helmet">消防帽</option>
+      </select>
+      <div id="stock-indicator"></div>
+    </div>
+    <div id="dynamic-fields"></div>
+    <div class="form-row" style="margin-top:4px;">
+      <label>損壞狀況描述 <span class="req">*</span></label>
+      <textarea id="r-condition" placeholder="請詳細描述裝備損壞情形..."></textarea>
+    </div>
+    <div class="form-row">
+      <label>汰換原因 <span class="req">*</span></label>
+      <select id="r-reason">
+        <option value="">-- 請選擇 --</option>
+        <option>超過使用年限</option>
+        <option>損壞無法修復</option>
+        <option>功能不足/規格過時</option>
+        <option>安全疑慮</option>
+        <option>其他</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📷 損壞照片</div>
+    <div class="photo-upload">
+      <input type="file" id="r-photos" accept="image/*" multiple onchange="previewPhotos(this)">
+      <div class="photo-upload-icon">📸</div>
+      <div class="photo-upload-text">點擊或拖曳上傳照片（可多張）</div>
+    </div>
+    <div class="photo-preview" id="photo-preview"></div>
+  </div>
+
+  <button class="btn-primary" id="submit-btn" onclick="submitRequest()">📤 提交汰換申請</button>
+</div>
+
+<!-- ══ 庫存查詢 ══ -->
+<div class="view" id="view-inventory">
+  <div class="section-heading">
+    <h2>庫存查詢</h2>
+    <span>INVENTORY STATUS</span>
+  </div>
+  <div class="divider-red"></div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <table class="inv-table">
+      <thead>
+        <tr><th>裝備名稱</th><th>庫存數量</th><th>狀態</th><th>最後更新</th></tr>
+      </thead>
+      <tbody id="inv-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ 管理後台 ══ -->
+<div class="view" id="view-admin">
+  <div id="admin-gate-wrap" class="admin-gate">
+    <div class="admin-login">
+      <div style="font-size:36px;margin-bottom:16px;">🔐</div>
+      <h3>管理員登入</h3>
+      <p>請輸入管理密碼</p>
+      <div class="form-row" style="margin-bottom:16px;">
+        <input type="password" id="admin-pw" placeholder="輸入密碼" onkeydown="if(event.key==='Enter')adminLogin()">
+      </div>
+      <button class="btn-primary" onclick="adminLogin()">登入</button>
+    </div>
+  </div>
+
+  <div id="admin-content" style="display:none;">
+    <div class="section-heading">
+      <h2>管理後台</h2>
+      <span>ADMIN PANEL</span>
+    </div>
+    <div class="divider-red"></div>
+
+    <!-- Google Sheets 設定 -->
+    <div class="config-panel" id="sheets-config">
+      <div class="config-panel-title">🔗 Google Sheets 同步設定</div>
+      <div id="sheets-status-display"></div>
+      <div style="margin-top:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);margin-bottom:8px;">APPS SCRIPT WEB APP URL</div>
+        <input class="config-url-input" id="sheets-url-input" placeholder="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
+        <div class="config-hint">
+          請先依照說明建立 Google Apps Script，取得網址後貼上，<span style="color:var(--warning)">儲存後即可雙向同步所有申請記錄與庫存。</span><br>
+          📄 詳細設定步驟請見下方「設定說明」卡片。
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+        <button class="btn-sm" onclick="saveSheetsConfig()">💾 儲存網址</button>
+        <button class="btn-sm" onclick="testSheetsConnection()" id="test-btn">🔌 測試連線</button>
+        <button class="btn-sm" onclick="syncFromSheets()" id="sync-btn">🔄 從雲端同步</button>
+      </div>
+    </div>
+
+    <div class="stats-grid" id="admin-stats"></div>
+
+    <!-- 庫存管理 -->
+    <div class="card">
+      <div class="card-title">📦 庫存管理</div>
+      <div style="overflow-x:auto;">
+        <table class="inv-table">
+          <thead><tr><th>裝備名稱</th><th>庫存數量</th><th>操作</th></tr></thead>
+          <tbody id="admin-inv-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 申請審核 -->
+    <div class="card">
+      <div class="card-title">📋 汰換申請審核</div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterRequests('all',this)">全部</button>
+        <button class="filter-btn" onclick="filterRequests('pending',this)">待審核</button>
+        <button class="filter-btn" onclick="filterRequests('approved',this)">已核准</button>
+        <button class="filter-btn" onclick="filterRequests('rejected',this)">未核准</button>
+      </div>
+      <div id="requests-list"></div>
+    </div>
+
+    <!-- Apps Script 設定說明 -->
+    <div class="card" id="setup-guide">
+      <div class="card-title">📘 Google Sheets 設定說明</div>
+      <div style="font-size:13px;color:var(--text-dim);line-height:2;">
+        <div style="background:var(--dark3);border-radius:6px;padding:16px;margin-bottom:12px;">
+          <div style="font-weight:700;color:var(--text);margin-bottom:8px;">步驟一：建立 Google 試算表</div>
+          <div>1. 開啟 <a href="https://sheets.google.com" target="_blank" style="color:#4FC3F7;">Google Sheets</a>，新增試算表</div>
+          <div>2. 將第一個工作表命名為 <code style="background:var(--dark4);padding:1px 6px;border-radius:3px;color:var(--warning);">申請記錄</code></div>
+          <div>3. 在 A1 開始依序填入欄位標題：<br>
+            <code style="background:var(--dark4);padding:2px 8px;border-radius:3px;color:var(--warning);font-size:12px;">申請ID | 單位 | 姓名 | 裝備 | 規格 | 損壞描述 | 汰換原因 | 狀態 | 管理員備註 | 申請時間 | 審核時間</code>
+          </div>
+          <div>4. 再新增第二個工作表，命名為 <code style="background:var(--dark4);padding:1px 6px;border-radius:3px;color:var(--warning);">庫存</code></div>
+          <div>5. 在 A1 填入：<code style="background:var(--dark4);padding:2px 8px;border-radius:3px;color:var(--warning);font-size:12px;">裝備ID | 裝備名稱 | 庫存數量 | 最後更新</code></div>
+        </div>
+        <div style="background:var(--dark3);border-radius:6px;padding:16px;margin-bottom:12px;">
+          <div style="font-weight:700;color:var(--text);margin-bottom:8px;">步驟二：建立 Apps Script</div>
+          <div>1. 在試算表中點選「擴充功能」→「Apps Script」</div>
+          <div>2. 刪除預設程式碼，貼上以下 Script：</div>
+          <div style="background:var(--dark4);border-radius:4px;padding:12px;margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:11px;color:#80CBC4;line-height:1.8;overflow-x:auto;white-space:pre;">
+const SS_ID = SpreadsheetApp.getActive().getId();
+
+function doPost(e) {
+  const data = JSON.parse(e.postData.contents);
+  const ss = SpreadsheetApp.openById(SS_ID);
+  const action = data.action;
+
+  if (action === 'addRequest') {
+    const sh = ss.getSheetByName('申請記錄');
+    sh.appendRow([
+      data.id, data.unit, data.name, data.equipName,
+      data.specs, data.condition, data.reason,
+      '待審核', '', data.submittedAt, ''
+    ]);
+  }
+  if (action === 'updateRequest') {
+    const sh = ss.getSheetByName('申請記錄');
+    const rows = sh.getDataRange().getValues();
+    for (let i = 1; i < rows.length; i++) {
+      if (rows[i][0] === data.id) {
+        sh.getRange(i+1, 8).setValue(data.status);
+        sh.getRange(i+1, 9).setValue(data.note || '');
+        sh.getRange(i+1, 11).setValue(new Date().toLocaleString('zh-TW'));
+        break;
+      }
+    }
+  }
+  if (action === 'updateStock') {
+    const sh = ss.getSheetByName('庫存');
+    const rows = sh.getDataRange().getValues();
+    for (let i = 1; i < rows.length; i++) {
+      if (rows[i][0] === data.id) {
+        sh.getRange(i+1, 3).setValue(data.stock);
+        sh.getRange(i+1, 4).setValue(new Date().toLocaleString('zh-TW'));
+        break;
+      }
+    }
+  }
+  if (action === 'initStock') {
+    const sh = ss.getSheetByName('庫存');
+    if (sh.getLastRow() <= 1) {
+      data.items.forEach(item => sh.appendRow([item.id, item.name, item.stock, '']));
+    }
+  }
+  return ContentService.createTextOutput(JSON.stringify({ok:true})).setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet(e) {
+  const ss = SpreadsheetApp.openById(SS_ID);
+  const action = e.parameter.action;
+
+  if (action === 'ping') {
+    return ContentService.createTextOutput(JSON.stringify({ok:true,msg:'連線成功'})).setMimeType(ContentService.MimeType.JSON);
+  }
+  if (action === 'getAll') {
+    const reqSh = ss.getSheetByName('申請記錄');
+    const invSh = ss.getSheetByName('庫存');
+    const reqRows = reqSh.getDataRange().getValues().slice(1);
+    const invRows = invSh.getDataRange().getValues().slice(1);
+    const requests = reqRows.filter(r=>r[0]).map(r => ({
+      id:r[0],unit:r[1],name:r[2],equipName:r[3],
+      specsStr:r[4],condition:r[5],reason:r[6],
+      status:r[7]||'pending',adminNote:r[8]||'',submittedAt:r[9]
+    }));
+    const inventory = invRows.filter(r=>r[0]).map(r => ({
+      id:r[0],name:r[1],stock:Number(r[2]),updated:r[3]
+    }));
+    return ContentService.createTextOutput(JSON.stringify({requests,inventory})).setMimeType(ContentService.MimeType.JSON);
+  }
+  return ContentService.createTextOutput(JSON.stringify({ok:false})).setMimeType(ContentService.MimeType.JSON);
+}</div>
+        </div>
+        <div style="background:var(--dark3);border-radius:6px;padding:16px;">
+          <div style="font-weight:700;color:var(--text);margin-bottom:8px;">步驟三：部署為網頁應用程式</div>
+          <div>1. 點選右上角「部署」→「新增部署作業」</div>
+          <div>2. 類型選「網頁應用程式」</div>
+          <div>3. 執行身份選「<strong style="color:var(--text);">我</strong>」</div>
+          <div>4. 存取權選「<strong style="color:var(--warning);">所有人</strong>」</div>
+          <div>5. 點「部署」，複製產生的網址</div>
+          <div>6. 將網址貼到上方設定欄，點「儲存網址」</div>
+          <div style="margin-top:8px;color:var(--warning);font-size:12px;">⚠️ 每次修改 Script 後需重新部署（選「管理現有部署」→「編輯」→版本選「新版本」），才會生效。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toast-msg">操作成功</span></div>
+
+<script>
+// ══════════════════════════════════════════════
+//  裝備設定 — 注意：數量欄位已移除，由管理員在庫存管理中維護
+// ══════════════════════════════════════════════
+const EQUIP_CONFIG = {
+  gloves: {
+    label:'消防手套',
+    fields:[{id:'size',label:'尺寸（號）',type:'select',req:true,
+      options:['7號','8號','9號','10號','11號','12號','13號']}]
+  },
+  boots: {
+    label:'消防鞋',
+    fields:[{id:'size',label:'尺寸（號）',type:'select',req:true,
+      options:['5號','6號','7號','8號','9號','10號','11號','12號','13號','14號']}]
+  },
+  hood: {
+    label:'頭套',
+    fields:[] // 無額外規格
+  },
+  necksafe: {
+    label:'護頸',
+    fields:[{id:'brand',label:'廠牌',type:'select',req:true,options:['MSA','盧森堡']}]
+  },
+  mask: {
+    label:'面罩眼鏡架',
+    fields:[{id:'brand',label:'廠牌',type:'select',req:true,options:['MSA','drager']}]
+  },
+  light: {
+    label:'胸燈',
+    fields:[]
+  },
+  helmet: {
+    label:'消防帽',
+    fields:[{id:'brand',label:'廠牌',type:'select',req:true,options:['MSA','盧森堡']}]
+  }
+};
+
+// ══════════════════════════════════════════════
+//  DATA STORE
+// ══════════════════════════════════════════════
+const STORAGE_KEY = 'fire5_v3';
+const ADMIN_PW = '2108';
+
+function now(){
+  return new Date().toLocaleDateString('zh-TW')+' '+new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
+}
+function getDefaultDB(){
+  return {
+    inventory: Object.entries(EQUIP_CONFIG).map(([id,cfg])=>({id,name:cfg.label,stock:0,updated:''})),
+    requests:[]
+  };
+}
+function loadDB(){
+  try{const r=localStorage.getItem(STORAGE_KEY);if(r)return JSON.parse(r);}catch(e){}
+  return getDefaultDB();
+}
+function saveDB(db){localStorage.setItem(STORAGE_KEY,JSON.stringify(db));}
+
+let DB = loadDB();
+
+// ══════════════════════════════════════════════
+//  SHEETS CONFIG
+// ══════════════════════════════════════════════
+const SHEETS_KEY = 'fire5_sheets_url';
+function getSheetsUrl(){return localStorage.getItem(SHEETS_KEY)||'';}
+function setSheetsUrl(url){localStorage.setItem(SHEETS_KEY,url);}
+function isConnected(){return !!getSheetsUrl();}
+
+function saveSheetsConfig(){
+  const url = document.getElementById('sheets-url-input').value.trim();
+  if(!url){showToast('⚠️ 請輸入網址','warning');return;}
+  setSheetsUrl(url);
+  updateSheetsStatus();
+  showToast('✅ 網址已儲存','success');
+}
+
+function updateSheetsStatus(){
+  const el = document.getElementById('sheets-status-display');
+  const url = getSheetsUrl();
+  const inp = document.getElementById('sheets-url-input');
+  if(url){
+    inp.value = url;
+    el.innerHTML = `<div class="config-connected">✅ 已設定 Google Sheets 同步　<span style="font-family:'Share Tech Mono',monospace;font-size:11px;opacity:0.7;">${url.substring(0,60)}...</span></div>`;
+  } else {
+    el.innerHTML = `<div style="font-size:12px;color:var(--text-muted);padding:8px 0;">尚未設定，資料僅儲存於此裝置。</div>`;
+  }
+}
+
+async function testSheetsConnection(){
+  const url = getSheetsUrl();
+  if(!url){showToast('⚠️ 請先儲存 Apps Script 網址','warning');return;}
+  const btn = document.getElementById('test-btn');
+  btn.innerHTML = '<span class="spin"></span>測試中...';
+  btn.disabled = true;
+  try{
+    const r = await fetch(`${url}?action=ping`);
+    const d = await r.json();
+    if(d.ok) showToast('✅ 連線成功！Google Sheets 已就緒','success');
+    else showToast('❌ 連線失敗，請檢查 Script 設定','warning');
+  }catch(e){
+    showToast('❌ 無法連線，請確認網址正確並已部署','warning');
+  }
+  btn.innerHTML = '🔌 測試連線';
+  btn.disabled = false;
+}
+
+async function syncFromSheets(){
+  const url = getSheetsUrl();
+  if(!url){showToast('⚠️ 尚未設定 Sheets 網址','warning');return;}
+  const btn = document.getElementById('sync-btn');
+  btn.innerHTML = '<span class="spin"></span>同步中...';
+  btn.disabled = true;
+  try{
+    const r = await fetch(`${url}?action=getAll`);
+    const d = await r.json();
+    if(d.inventory && d.requests){
+      // Merge inventory (keep local structure, update stock from sheets)
+      d.inventory.forEach(si => {
+        const li = DB.inventory.find(i=>i.id===si.id);
+        if(li){ li.stock=si.stock; li.updated=si.updated||li.updated; }
+      });
+      // Merge requests
+      d.requests.forEach(sr => {
+        const li = DB.requests.find(r=>r.id===sr.id);
+        if(li){
+          li.status = sr.status;
+          li.adminNote = sr.adminNote;
+        } else {
+          // Reconstruct local request object from sheets row
+          DB.requests.push({
+            id:sr.id, unit:sr.unit, name:sr.name,
+            equipId: Object.keys(EQUIP_CONFIG).find(k=>EQUIP_CONFIG[k].label===sr.equipName)||'',
+            equipName:sr.equipName,
+            dynVals: parseSpecsStr(sr.specsStr, sr.equipName),
+            condition:sr.condition, reason:sr.reason,
+            status:sr.status||'pending',
+            adminNote:sr.adminNote||'',
+            submittedAt:sr.submittedAt||''
+          });
+        }
+      });
+      // Sort requests by time desc
+      DB.requests.sort((a,b)=>b.id.localeCompare(a.id));
+      saveDB(DB);
+      renderAdminPanel();
+      showToast('✅ 已從 Google Sheets 同步完成','success');
+    }
+  }catch(e){
+    showToast('❌ 同步失敗，請確認連線','warning');
+  }
+  btn.innerHTML = '🔄 從雲端同步';
+  btn.disabled = false;
+}
+
+function parseSpecsStr(str, equipName){
+  if(!str) return {};
+  const result = {};
+  str.split('，').forEach(part => {
+    const [k,v] = part.split('：');
+    if(k==='尺寸') result.size=v;
+    if(k==='廠牌') result.brand=v;
+    if(k==='品項') result.brand=v;
+  });
+  return result;
+}
+
+async function pushToSheets(action, payload){
+  const url = getSheetsUrl();
+  if(!url) return; // silent fail if not configured
+  try{
+    await fetch(url, {
+      method:'POST',
+      body: JSON.stringify({action, ...payload})
+    });
+  }catch(e){ console.warn('Sheets sync error:', e); }
+}
+
+// ══════════════════════════════════════════════
+//  NAV
+// ══════════════════════════════════════════════
+function switchView(view){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-'+view).classList.add('active');
+  document.getElementById('nav-'+view).classList.add('active');
+  if(view==='inventory') renderInventoryTable();
+}
+
+// ══════════════════════════════════════════════
+//  DYNAMIC FIELDS（規格欄位，已無數量）
+// ══════════════════════════════════════════════
+function onEquipChange(){
+  const key = document.getElementById('r-equip').value;
+  checkStock();
+  renderDynamicFields(key);
+}
+
+function renderDynamicFields(key){
+  const wrap = document.getElementById('dynamic-fields');
+  if(!key||!EQUIP_CONFIG[key]||EQUIP_CONFIG[key].fields.length===0){wrap.innerHTML='';return;}
+  const fields = EQUIP_CONFIG[key].fields;
+  let html = `<div style="margin-top:16px;">`;
+  fields.forEach(f => {
+    let input = '';
+    if(f.type==='select'){
+      input=`<select id="df-${f.id}"><option value="">-- 請選擇 --</option>${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    } else {
+      input=`<input type="text" id="df-${f.id}" placeholder="請輸入${f.label}">`;
+    }
+    html+=`<div class="form-row"><label>${f.label}${f.req?'<span class="req"> *</span>':''}</label>${input}</div>`;
+  });
+  html+='</div>';
+  wrap.innerHTML = html;
+}
+
+function getDynVals(key){
+  if(!key||!EQUIP_CONFIG[key]) return {};
+  const r={};
+  EQUIP_CONFIG[key].fields.forEach(f=>{const el=document.getElementById('df-'+f.id);if(el)r[f.id]=el.value;});
+  return r;
+}
+
+function specsToStr(dynVals, equipId){
+  const cfg=EQUIP_CONFIG[equipId]; if(!cfg||!dynVals) return '';
+  return cfg.fields.map(f=>{const v=dynVals[f.id];return v?`${f.label}：${v}`:null;}).filter(Boolean).join('，');
+}
+
+function checkStock(){
+  const key = document.getElementById('r-equip').value;
+  const el = document.getElementById('stock-indicator');
+  if(!key){el.innerHTML='';return;}
+  const item = DB.inventory.find(i=>i.id===key);
+  if(!item){el.innerHTML='';return;}
+  const s=item.stock;
+  if(s===0) el.innerHTML=`<div class="inventory-badge badge-out">❌ 目前無庫存，申請後將排入候補</div>`;
+  else if(s<=2) el.innerHTML=`<div class="inventory-badge badge-low">⚠️ 庫存偏低：剩餘 ${s} 件</div>`;
+  else el.innerHTML=`<div class="inventory-badge badge-ok">✅ 庫存充足：剩餘 ${s} 件</div>`;
+}
+
+// ══════════════════════════════════════════════
+//  PHOTOS
+// ══════════════════════════════════════════════
+function previewPhotos(input){
+  const preview=document.getElementById('photo-preview');
+  preview.innerHTML='';
+  Array.from(input.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=e=>{const img=document.createElement('img');img.src=e.target.result;img.className='photo-thumb';preview.appendChild(img);};
+    reader.readAsDataURL(file);
+  });
+}
+
+// ══════════════════════════════════════════════
+//  SUBMIT
+// ══════════════════════════════════════════════
+async function submitRequest(){
+  const unit=document.getElementById('r-unit').value;
+  const name=document.getElementById('r-name').value.trim();
+  const equipKey=document.getElementById('r-equip').value;
+  const condition=document.getElementById('r-condition').value.trim();
+  const reason=document.getElementById('r-reason').value;
+
+  if(!unit||!name||!equipKey||!condition||!reason){showToast('⚠️ 請填寫所有必填欄位','warning');return;}
+
+  const cfg=EQUIP_CONFIG[equipKey];
+  const dynVals=getDynVals(equipKey);
+  for(const f of cfg.fields){
+    if(f.req&&!dynVals[f.id]){showToast(`⚠️ 請填寫「${f.label}」`,'warning');return;}
+  }
+
+  const btn=document.getElementById('submit-btn');
+  btn.innerHTML='<span class="spin"></span>提交中...';
+  btn.disabled=true;
+
+  const req={
+    id:'req_'+Date.now(),
+    unit,name,
+    equipId:equipKey,
+    equipName:cfg.label,
+    dynVals,
+    condition,reason,
+    status:'pending',
+    adminNote:'',
+    submittedAt:now()
+  };
+
+  DB.requests.unshift(req);
+  saveDB(DB);
+
+  // Push to Google Sheets
+  await pushToSheets('addRequest',{
+    id:req.id, unit, name,
+    equipName:cfg.label,
+    specs:specsToStr(dynVals,equipKey),
+    condition, reason,
+    submittedAt:req.submittedAt
+  });
+
+  showToast('✅ 申請已成功提交，請等待主管審核','success');
+
+  ['r-unit','r-name','r-equip','r-condition','r-reason'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('stock-indicator').innerHTML='';
+  document.getElementById('dynamic-fields').innerHTML='';
+  document.getElementById('photo-preview').innerHTML='';
+  document.getElementById('r-photos').value='';
+
+  btn.innerHTML='📤 提交汰換申請';
+  btn.disabled=false;
+}
+
+// ══════════════════════════════════════════════
+//  INVENTORY TABLE (public)
+// ══════════════════════════════════════════════
+function renderInventoryTable(){
+  const tbody=document.getElementById('inv-tbody');
+  tbody.innerHTML='';
+  DB.inventory.forEach(item=>{
+    const s=item.stock;
+    const cls=s===0?'stock-out':s<=2?'stock-low':'stock-ok';
+    const badge=s===0
+      ?'<span class="inventory-badge badge-out">無庫存</span>'
+      :s<=2?'<span class="inventory-badge badge-low">庫存偏低</span>'
+           :'<span class="inventory-badge badge-ok">庫存充足</span>';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><strong>${item.name}</strong></td><td><span class="stock-num ${cls}">${s}</span></td><td>${badge}</td><td><span class="timestamp">${item.updated||'—'}</span></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+// ══════════════════════════════════════════════
+//  ADMIN
+// ══════════════════════════════════════════════
+function adminLogin(){
+  if(document.getElementById('admin-pw').value===ADMIN_PW){
+    document.getElementById('admin-gate-wrap').style.display='none';
+    document.getElementById('admin-content').style.display='block';
+    updateSheetsStatus();
+    renderAdminPanel();
+  } else { showToast('❌ 密碼錯誤','warning'); }
+}
+
+function renderAdminPanel(){
+  renderAdminStats();
+  renderAdminInventory();
+  renderAdminRequests('all');
+}
+
+function renderAdminStats(){
+  const pending=DB.requests.filter(r=>r.status==='pending').length;
+  const approved=DB.requests.filter(r=>r.status==='approved').length;
+  const total=DB.inventory.reduce((a,b)=>a+b.stock,0);
+  const outOf=DB.inventory.filter(i=>i.stock===0).length;
+  document.getElementById('admin-stats').innerHTML=`
+    <div class="stat-card"><div class="stat-num" style="color:var(--warning)">${pending}</div><div class="stat-label">待審核申請</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--success)">${approved}</div><div class="stat-label">已核准</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--info)">${total}</div><div class="stat-label">總庫存量</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--red-light)">${outOf}</div><div class="stat-label">缺貨裝備數</div></div>`;
+}
+
+function renderAdminInventory(){
+  const tbody=document.getElementById('admin-inv-tbody');
+  tbody.innerHTML='';
+  DB.inventory.forEach(item=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><strong>${item.name}</strong></td>
+      <td><input class="inv-edit-input" type="number" min="0" value="${item.stock}" id="si-${item.id}"></td>
+      <td><button class="btn-sm" style="padding:6px 14px;font-size:12px;" onclick="updateStock('${item.id}')">儲存</button></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+async function updateStock(id){
+  const val=document.getElementById('si-'+id).value;
+  const item=DB.inventory.find(i=>i.id===id);
+  if(item){
+    item.stock=parseInt(val)||0;
+    item.updated=now();
+    saveDB(DB);
+    renderAdminStats();
+    showToast('✅ 庫存已更新','success');
+    await pushToSheets('updateStock',{id,stock:item.stock});
+  }
+}
+
+let currentFilter='all';
+function filterRequests(filter,btn){
+  currentFilter=filter;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAdminRequests(filter);
+}
+
+function fmtDyn(dynVals,equipId){
+  const cfg=EQUIP_CONFIG[equipId]; if(!cfg||!dynVals) return '';
+  return cfg.fields.map(f=>{const v=dynVals[f.id];return v?`${f.label}：${v}`:null;}).filter(Boolean).join('　');
+}
+
+function renderAdminRequests(filter){
+  const list=document.getElementById('requests-list');
+  let items=DB.requests;
+  if(filter!=='all') items=items.filter(r=>r.status===filter);
+  if(items.length===0){list.innerHTML=`<div class="empty-state"><div class="icon">📭</div><p>目前沒有符合條件的申請</p></div>`;return;}
+  list.innerHTML=items.map(r=>{
+    const inv=DB.inventory.find(i=>i.id===r.equipId);
+    const stockAvail=inv&&inv.stock>0;
+    const stockTag=r.status==='pending'
+      ?(stockAvail?`<span class="status-tag" style="background:rgba(0,200,83,0.1);color:var(--success)">庫存 ${inv.stock} 件</span>`:`<span class="status-tag tag-nostock">無庫存</span>`):'';
+    const statusTag=r.status==='approved'
+      ?`<span class="status-tag tag-approved">✅ 已核准</span>`
+      :r.status==='rejected'?`<span class="status-tag tag-rejected">❌ 未核准</span>`:`<span class="status-tag tag-pending">⏳ 待審核</span>`;
+    const actions=r.status==='pending'?`
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-sm-success" onclick="approveRequest('${r.id}')">核准</button>
+        <button class="btn-sm-danger" onclick="rejectRequest('${r.id}')">不核准</button>
+      </div>`:'';
+    const dynStr=fmtDyn(r.dynVals,r.equipId);
+    return `
+      <div class="req-item ${r.status}">
+        <div style="flex:1;min-width:0;">
+          <div class="req-name">🪖 ${r.equipName}</div>
+          <div class="req-meta">
+            <span>🏢 ${r.unit}</span>
+            <span>👤 ${r.name}</span>
+            <span class="timestamp">${r.submittedAt}</span>
+          </div>
+          ${dynStr?`<div class="req-detail">📐 ${dynStr}</div>`:''}
+          <div class="req-detail">原因：${r.reason}</div>
+          <div class="req-detail" style="color:var(--text-muted);">${r.condition}</div>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">${statusTag}${stockTag}</div>
+          <div style="margin-top:8px;">
+            <input class="note-input" style="max-width:360px;" placeholder="管理員備註..."
+              value="${(r.adminNote||'').replace(/"/g,'&quot;')}"
+              onchange="saveNote('${r.id}',this.value)">
+          </div>
+        </div>
+        <div>${actions}</div>
+      </div>`;
+  }).join('');
+}
+
+async function approveRequest(id){
+  const req=DB.requests.find(r=>r.id===id); if(!req)return;
+  req.status='approved';
+  const item=DB.inventory.find(i=>i.id===req.equipId);
+  if(item&&item.stock>0){item.stock=Math.max(0,item.stock-1);item.updated=now();}
+  saveDB(DB);
+  renderAdminPanel();
+  showToast('✅ 已核准，庫存自動扣除','success');
+  await pushToSheets('updateRequest',{id,status:'approved',note:req.adminNote||''});
+  if(item) await pushToSheets('updateStock',{id:item.id,stock:item.stock});
+}
+
+async function rejectRequest(id){
+  const req=DB.requests.find(r=>r.id===id); if(!req)return;
+  req.status='rejected';
+  saveDB(DB);
+  renderAdminPanel();
+  showToast('❌ 已標記為不核准','warning');
+  await pushToSheets('updateRequest',{id,status:'rejected',note:req.adminNote||''});
+}
+
+async function saveNote(id,note){
+  const req=DB.requests.find(r=>r.id===id);
+  if(req){
+    req.adminNote=note;
+    saveDB(DB);
+    await pushToSheets('updateRequest',{id,status:req.status,note});
+  }
+}
+
+// ══════════════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════════════
+let toastTimer;
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.className='toast show '+type;
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3200);
+}
+</script>
+</body>
+</html>
