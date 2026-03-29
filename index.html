@@ -571,8 +571,9 @@ let DB = loadDB();
 // fill missing
 mkInv().forEach(d => { if (!DB.inv.find(i => i.sid === d.sid)) DB.inv.push(d); });
 
-function getSH() { return localStorage.getItem(SHK) || ''; }
-function setSH(u) { localStorage.setItem(SHK, u); }
+function getSH() { 
+  return 'https://script.google.com/macros/s/AKfycbyewAalJcpYiIOyNHMIBsw16YGilBfbuNYtulXeiKEnz138plDGORtdm7SsEGYOtqsjKw/exec'; 
+}function setSH(u) { localStorage.setItem(SHK, u); }
 function ts() { return new Date().toLocaleDateString('zh-TW') + ' ' + new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'}); }
 
 // ══ SHEETS ══
