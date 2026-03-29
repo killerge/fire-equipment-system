@@ -9,197 +9,197 @@
 :root{
   --red:#C62828;--red-dark:#B71C1C;--red-light:#E53935;--red-bg:#FFF5F5;
   --orange:#E65100;
-  --bg:#F5F6F8;--surface:#FFFFFF;--surface2:#F9FAFB;
+  --bg:#F4F5F7;--surface:#FFFFFF;--surface2:#F9FAFB;
   --border:#E5E7EB;--border-dark:#D1D5DB;
-  --text:#111827;--text-secondary:#374151;--text-muted:#6B7280;--text-light:#9CA3AF;
-  --success:#16A34A;--success-bg:#F0FDF4;--success-border:#BBF7D0;
-  --warning:#D97706;--warning-bg:#FFFBEB;--warning-border:#FDE68A;
-  --danger-bg:#FEF2F2;--danger-border:#FECACA;
-  --info:#1D4ED8;--info-bg:#EFF6FF;--info-border:#BFDBFE;
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
-  --shadow:0 4px 12px rgba(0,0,0,0.08);
-  --shadow-md:0 8px 24px rgba(0,0,0,0.10);
+  --text:#0F172A;--text-secondary:#334155;--text-muted:#64748B;--text-light:#94A3B8;
+  --success:#16A34A;--success-bg:#F0FDF4;--success-border:#86EFAC;
+  --warning:#D97706;--warning-bg:#FFFBEB;--warning-border:#FCD34D;
+  --danger-bg:#FEF2F2;--danger-border:#FCA5A5;
+  --info:#1D4ED8;--info-bg:#EFF6FF;--info-border:#93C5FD;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.07),0 1px 2px rgba(0,0,0,0.05);
+  --shadow:0 4px 14px rgba(0,0,0,0.09);
+  --shadow-md:0 8px 28px rgba(0,0,0,0.12);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:14px;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:16px;line-height:1.6;}
 
 /* ── HEADER ── */
-.header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm);}
-.header-brand{display:flex;align-items:center;gap:10px;}
-.header-icon{font-size:22px;}
-.header-title{font-size:15px;font-weight:700;letter-spacing:0.5px;}
-.header-sub{font-size:10px;color:var(--text-muted);letter-spacing:1px;}
-.header-nav{display:flex;gap:2px;}
-.nav-btn{background:transparent;border:none;color:var(--text-muted);padding:7px 16px;border-radius:6px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:13px;font-weight:500;transition:all 0.15s;display:flex;align-items:center;gap:6px;}
+.header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm);}
+.header-brand{display:flex;align-items:center;gap:12px;}
+.header-icon{font-size:26px;}
+.header-title{font-size:17px;font-weight:700;letter-spacing:0.3px;}
+.header-sub{font-size:11px;color:var(--text-muted);}
+.header-nav{display:flex;gap:4px;}
+.nav-btn{background:transparent;border:none;color:var(--text-muted);padding:8px 18px;border-radius:7px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:15px;font-weight:500;transition:all 0.15s;display:flex;align-items:center;gap:7px;}
 .nav-btn:hover{color:var(--text);background:var(--bg);}
-.nav-btn.active{background:var(--red);color:#fff;}
+.nav-btn.active{background:var(--red);color:#fff;font-weight:600;}
 
 /* ── VIEWS ── */
-.view{display:none;padding:28px;max-width:900px;margin:0 auto;}
+.view{display:none;padding:28px 32px;max-width:960px;margin:0 auto;}
 .view.active{display:block;}
-.page-title{font-size:20px;font-weight:700;margin-bottom:4px;}
-.page-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
-.divider{height:1px;background:var(--border);margin-bottom:24px;}
+.page-title{font-size:22px;font-weight:700;margin-bottom:5px;}
+.page-sub{font-size:15px;color:var(--text-muted);margin-bottom:26px;}
+.divider{height:1px;background:var(--border);margin-bottom:26px;}
 
 /* ── CARD ── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
-.card-title{font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:16px;display:flex;align-items:center;gap:7px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:26px;margin-bottom:18px;box-shadow:var(--shadow-sm);}
+.card-title{font-size:15px;font-weight:600;color:var(--text-secondary);margin-bottom:18px;display:flex;align-items:center;gap:8px;padding-bottom:14px;border-bottom:1px solid var(--border);}
 
 /* ── FORM ── */
-.form-row{margin-bottom:16px;}
+.form-row{margin-bottom:18px;}
 .form-row:last-child{margin-bottom:0;}
-.form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;}
+.form-row label{display:block;font-size:15px;font-weight:600;color:var(--text-secondary);margin-bottom:7px;}
 .form-row label .req{color:var(--red);margin-left:2px;}
-.form-row input,.form-row select,.form-row textarea{width:100%;background:#fff;border:1px solid var(--border-dark);border-radius:6px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:14px;padding:10px 13px;transition:border-color 0.15s,box-shadow 0.15s;outline:none;appearance:none;}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:#fff;border:1px solid var(--border-dark);border-radius:8px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:15px;padding:11px 14px;transition:border-color 0.15s,box-shadow 0.15s;outline:none;appearance:none;}
 .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(198,40,40,0.10);}
 .form-row input::placeholder,.form-row textarea::placeholder{color:var(--text-light);}
-.form-row textarea{resize:vertical;min-height:80px;}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-@media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+.form-row textarea{resize:vertical;min-height:90px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:620px){.form-grid{grid-template-columns:1fr;}}
 
 /* ── BADGES ── */
-.inv-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;margin-top:8px;}
+.inv-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:7px;font-size:14px;font-weight:600;margin-top:10px;}
 .badge-ok{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);}
 .badge-low{background:var(--warning-bg);color:var(--warning);border:1px solid var(--warning-border);}
 .badge-out{background:var(--danger-bg);color:var(--red-light);border:1px solid var(--danger-border);}
 
-/* ── PHOTO UPLOAD ── */
-.photo-upload{border:2px dashed var(--border-dark);border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:border-color 0.15s,background 0.15s;position:relative;background:var(--surface2);}
+/* ── PHOTO ── */
+.photo-upload{border:2px dashed var(--border-dark);border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:all 0.15s;position:relative;background:var(--surface2);}
 .photo-upload:hover{border-color:var(--red);background:var(--red-bg);}
 .photo-upload input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.photo-upload-icon{font-size:26px;margin-bottom:6px;}
-.photo-upload-text{font-size:13px;color:var(--text-muted);}
-.photo-upload-note{font-size:11px;color:var(--text-light);margin-top:4px;}
-.photo-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-.photo-thumb{width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--border);cursor:pointer;}
-.uploading-indicator{font-size:12px;color:var(--info);display:flex;align-items:center;gap:6px;margin-top:8px;}
+.photo-upload-icon{font-size:30px;margin-bottom:8px;}
+.photo-upload-text{font-size:15px;color:var(--text-muted);}
+.photo-upload-note{font-size:12px;color:var(--text-light);margin-top:5px;}
+.photo-preview{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.photo-thumb{width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:opacity 0.15s;}
+.photo-thumb:hover{opacity:0.8;}
+.upload-prog{font-size:14px;color:var(--info);display:flex;align-items:center;gap:7px;margin-top:10px;}
 
 /* ── BUTTONS ── */
-.btn-primary{background:var(--red);color:#fff;border:none;border-radius:8px;padding:13px 32px;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all 0.15s;box-shadow:0 2px 8px rgba(198,40,40,0.25);}
+.btn-primary{background:var(--red);color:#fff;border:none;border-radius:9px;padding:14px 32px;font-family:'Noto Sans TC',sans-serif;font-size:16px;font-weight:600;cursor:pointer;width:100%;transition:all 0.15s;box-shadow:0 2px 10px rgba(198,40,40,0.28);}
 .btn-primary:hover{background:var(--red-dark);}
-.btn-primary:disabled{opacity:0.6;cursor:not-allowed;}
-.btn-sm{background:var(--surface);color:var(--text-secondary);border:1px solid var(--border-dark);border-radius:6px;padding:6px 14px;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.btn-primary:disabled{opacity:0.55;cursor:not-allowed;}
+.btn-sm{background:var(--surface);color:var(--text-secondary);border:1px solid var(--border-dark);border-radius:7px;padding:7px 16px;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
 .btn-sm:hover{border-color:var(--red);color:var(--red);}
 .btn-sm:disabled{opacity:0.5;cursor:not-allowed;}
-.btn-danger{background:var(--danger-bg);color:var(--red-light);border:1px solid var(--danger-border);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.15s;}
+.btn-danger{background:var(--danger-bg);color:var(--red-light);border:1px solid var(--danger-border);border-radius:7px;padding:7px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.15s;}
 .btn-danger:hover{background:#FEE2E2;}
-.btn-success{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.15s;}
+.btn-success{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);border-radius:7px;padding:7px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.15s;}
 .btn-success:hover{background:#DCFCE7;}
+.btn-sync{background:var(--info);color:#fff;border:none;border-radius:9px;padding:12px 26px;font-family:'Noto Sans TC',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.15s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}
+.btn-sync:hover{background:#1e40af;}
+.btn-sync:disabled{opacity:0.55;cursor:not-allowed;}
 
 /* ── ADMIN TABS ── */
-.admin-tabs{display:flex;gap:0;margin-bottom:20px;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface2);}
-.admin-tab{flex:1;padding:10px 16px;border:none;background:transparent;font-family:'Noto Sans TC',sans-serif;font-size:13px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.15s;text-align:center;}
+.admin-tabs{display:flex;gap:0;margin-bottom:22px;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface2);}
+.admin-tab{flex:1;padding:12px 16px;border:none;background:transparent;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.15s;text-align:center;}
 .admin-tab:hover{background:var(--bg);color:var(--text);}
 .admin-tab.active{background:var(--surface);color:var(--red);font-weight:700;box-shadow:var(--shadow-sm);}
 .admin-panel{display:none;}
 .admin-panel.active{display:block;}
 
 /* ── SYNC BAR ── */
-.sync-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--info-bg);border:1px solid var(--info-border);border-radius:10px;padding:16px 20px;margin-bottom:20px;flex-wrap:wrap;}
-.sync-left{display:flex;align-items:center;gap:12px;}
-.sync-dot{width:10px;height:10px;border-radius:50%;background:#9CA3AF;flex-shrink:0;transition:background 0.3s;}
-.sync-dot.connected{background:var(--success);box-shadow:0 0 0 3px rgba(22,163,74,0.2);}
+.sync-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--info-bg);border:1px solid var(--info-border);border-radius:12px;padding:18px 22px;margin-bottom:22px;flex-wrap:wrap;}
+.sync-left{display:flex;align-items:center;gap:14px;}
+.sync-dot{width:12px;height:12px;border-radius:50%;background:#94A3B8;flex-shrink:0;transition:background 0.3s;}
+.sync-dot.connected{background:var(--success);box-shadow:0 0 0 4px rgba(22,163,74,0.18);}
 .sync-dot.syncing{background:var(--info);animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.sync-title{font-size:14px;font-weight:600;color:var(--info);}
-.sync-sub{font-size:11px;color:var(--text-muted);}
-.btn-sync{background:var(--info);color:#fff;border:none;border-radius:8px;padding:11px 24px;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}
-.btn-sync:hover{background:#1e40af;}
-.btn-sync:disabled{opacity:0.6;cursor:not-allowed;}
+.sync-title{font-size:16px;font-weight:700;color:var(--info);}
+.sync-sub{font-size:13px;color:var(--text-muted);}
 
 /* ── STATS ── */
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
-@media(max-width:600px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px 20px;text-align:center;box-shadow:var(--shadow-sm);}
-.stat-num{font-size:38px;font-weight:700;line-height:1;margin-bottom:6px;}
-.stat-label{font-size:12px;color:var(--text-muted);font-weight:500;}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+@media(max-width:580px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 20px;text-align:center;box-shadow:var(--shadow-sm);}
+.stat-num{font-size:44px;font-weight:700;line-height:1;margin-bottom:8px;}
+.stat-label{font-size:14px;color:var(--text-muted);font-weight:500;}
 
 /* ── INVENTORY ROWS ── */
-.inv-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
-.inv-row:last-child{border-bottom:none;}
-.inv-row-label{flex:1;font-size:13px;color:var(--text-secondary);font-weight:500;}
-.inv-row-num{width:60px;border:1px solid var(--border-dark);border-radius:6px;padding:7px 10px;font-size:14px;font-weight:700;text-align:center;outline:none;background:#fff;color:var(--text);transition:border-color 0.15s;}
-.inv-row-num:focus{border-color:var(--red);}
-.inv-saved-badge{font-size:12px;color:var(--success);font-weight:600;opacity:0;transition:opacity 0.3s;white-space:nowrap;}
-.inv-saved-badge.show{opacity:1;}
-.inv-equip-title{font-size:14px;font-weight:700;color:var(--text);padding:14px 0 6px;}
+.inv-equip-title{font-size:16px;font-weight:700;color:var(--text);padding:16px 0 8px;}
 .inv-equip-title:first-child{padding-top:0;}
+.inv-row{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid var(--border);}
+.inv-row:last-of-type{border-bottom:none;}
+.inv-row-label{flex:1;font-size:15px;color:var(--text-secondary);font-weight:500;}
+.inv-row-num{width:72px;border:1px solid var(--border-dark);border-radius:7px;padding:8px 10px;font-size:16px;font-weight:700;text-align:center;outline:none;background:#fff;color:var(--text);transition:border-color 0.15s;}
+.inv-row-num:focus{border-color:var(--red);}
+.inv-saved{font-size:13px;color:var(--success);font-weight:600;opacity:0;transition:opacity 0.3s;white-space:nowrap;min-width:80px;}
+.inv-saved.show{opacity:1;}
 
-/* ── REQUEST ITEMS ── */
-.req-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0;margin-bottom:10px;box-shadow:var(--shadow-sm);overflow:hidden;}
-.req-card.approved{border-left:4px solid var(--success);}
-.req-card.rejected{border-left:4px solid var(--red-light);}
-.req-card.pending{border-left:4px solid var(--warning);}
-.req-body{display:flex;gap:0;}
-.req-info{flex:1;padding:16px 18px;min-width:0;}
-.req-photos-col{width:160px;flex-shrink:0;background:var(--surface2);border-left:1px solid var(--border);padding:12px;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:flex-start;}
-.req-photos-col.empty{display:none;}
-.req-name{font-size:14px;font-weight:700;margin-bottom:4px;}
-.req-meta{font-size:12px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
-.req-detail{font-size:13px;color:var(--text-secondary);margin-bottom:3px;}
-.req-thumb{width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid var(--border);cursor:pointer;}
-.req-thumb:hover{opacity:0.85;}
-.req-foot{padding:10px 18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface2);}
+/* ── REQ CARD ── */
+.req-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:12px;box-shadow:var(--shadow-sm);overflow:hidden;}
+.req-card.approved{border-left:5px solid var(--success);}
+.req-card.rejected{border-left:5px solid var(--red-light);}
+.req-card.pending{border-left:5px solid var(--warning);}
+.req-body{display:flex;}
+.req-info{flex:1;padding:18px 20px;min-width:0;}
+.req-photos-col{width:170px;flex-shrink:0;background:var(--surface2);border-left:1px solid var(--border);padding:14px;display:flex;flex-direction:column;gap:8px;align-items:center;}
+.req-photos-col.hidden{display:none;}
+.req-name{font-size:17px;font-weight:700;margin-bottom:6px;}
+.req-meta{font-size:14px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:12px;margin-bottom:7px;}
+.req-detail{font-size:15px;color:var(--text-secondary);margin-bottom:4px;}
+.req-thumb{width:72px;height:72px;object-fit:cover;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:opacity 0.15s;}
+.req-thumb:hover{opacity:0.8;}
+.req-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface2);}
 
-.status-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;white-space:nowrap;}
+/* ── FILTER / STATUS TAGS ── */
+.filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.filter-btn{background:var(--surface);border:1px solid var(--border-dark);color:var(--text-muted);padding:6px 18px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:'Noto Sans TC',sans-serif;}
+.filter-btn.active,.filter-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-bg);}
+.status-tag{font-size:13px;font-weight:600;padding:4px 12px;border-radius:5px;white-space:nowrap;}
 .tag-pending{background:var(--warning-bg);color:var(--warning);border:1px solid var(--warning-border);}
 .tag-approved{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);}
 .tag-rejected{background:var(--danger-bg);color:var(--red-light);border:1px solid var(--danger-border);}
 .tag-nostock{background:#FFF7ED;color:var(--orange);border:1px solid #FED7AA;}
 
-/* ── TOAST ── */
-.toast{position:fixed;bottom:28px;right:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 18px;font-size:13px;font-weight:500;color:var(--text);z-index:999;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:9px;transform:translateY(70px);opacity:0;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);min-width:220px;}
-.toast.show{transform:translateY(0);opacity:1;}
-.toast.success{border-left:4px solid var(--success);}
-.toast.warning{border-left:4px solid var(--warning);}
+/* ── NOTE INPUT ── */
+.note-input{background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:14px;padding:7px 12px;outline:none;flex:1;min-width:0;}
+.note-input:focus{border-color:var(--info);}
+.timestamp{font-size:13px;color:var(--text-light);}
 
-/* ── ADMIN GATE ── */
-.admin-gate{display:flex;align-items:center;justify-content:center;min-height:360px;}
-.admin-login{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:40px;width:340px;text-align:center;box-shadow:var(--shadow);}
-.admin-login h3{font-size:16px;font-weight:700;margin-bottom:6px;}
-.admin-login p{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:48px 24px;color:var(--text-muted);}
+.empty-state .icon{font-size:40px;margin-bottom:12px;opacity:0.4;}
+.empty-state p{font-size:15px;}
+.empty-state small{font-size:13px;}
 
-/* ── FILTER ── */
-.filter-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
-.filter-btn{background:var(--surface);border:1px solid var(--border-dark);color:var(--text-muted);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:'Noto Sans TC',sans-serif;}
-.filter-btn.active,.filter-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-bg);}
-
-/* ── HISTORY ── */
-.history-toggle{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;margin-top:12px;margin-bottom:4px;user-select:none;}
-.history-toggle:hover{background:#F3F4F6;}
-.history-toggle-label{font-size:13px;font-weight:600;color:var(--text-secondary);}
-.history-arrow{font-size:11px;color:var(--text-muted);transition:transform 0.2s;}
-.history-toggle.open .history-arrow{transform:rotate(180deg);}
-.history-body{display:none;margin-top:6px;}
-.history-body.open{display:block;}
-.load-more-btn{text-align:center;padding:10px;font-size:12px;color:var(--info);cursor:pointer;font-weight:500;}
+/* ── LOAD MORE ── */
+.load-more-btn{text-align:center;padding:12px;font-size:14px;color:var(--info);cursor:pointer;font-weight:500;}
 .load-more-btn:hover{text-decoration:underline;}
 
-/* ── NOTE INPUT ── */
-.note-input{background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:12px;padding:6px 10px;outline:none;flex:1;}
-.note-input:focus{border-color:var(--info);}
-.timestamp{font-size:11px;color:var(--text-light);}
-.empty-state{text-align:center;padding:40px 24px;color:var(--text-muted);}
-.empty-state .icon{font-size:34px;margin-bottom:10px;opacity:0.4;}
-.empty-state p{font-size:13px;}
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;right:24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 20px;font-size:15px;font-weight:500;color:var(--text);z-index:9999;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:10px;transform:translateY(70px);opacity:0;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);min-width:240px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.success{border-left:5px solid var(--success);}
+.toast.warning{border-left:5px solid var(--warning);}
 
-/* ── CONFIG PANEL ── */
-.config-panel{background:var(--info-bg);border:1px solid var(--info-border);border-radius:10px;padding:18px 20px;margin-bottom:16px;}
-.config-title{font-size:13px;font-weight:600;color:var(--info);margin-bottom:12px;}
-.config-connected{background:var(--success-bg);border:1px solid var(--success-border);border-radius:6px;padding:9px 14px;font-size:13px;color:var(--success);margin-bottom:10px;}
-.config-url-input{width:100%;background:#fff;border:1px solid var(--info-border);border-radius:6px;color:var(--text);font-size:13px;padding:9px 12px;outline:none;font-family:'Noto Sans TC',sans-serif;margin-bottom:8px;}
+/* ── ADMIN GATE ── */
+.admin-gate{display:flex;align-items:center;justify-content:center;min-height:380px;}
+.admin-login{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:44px;width:360px;text-align:center;box-shadow:var(--shadow);}
+.admin-login h3{font-size:18px;font-weight:700;margin-bottom:8px;}
+.admin-login p{font-size:15px;color:var(--text-muted);margin-bottom:28px;}
+
+/* ── CONFIG ── */
+.config-panel{background:var(--info-bg);border:1px solid var(--info-border);border-radius:12px;padding:20px 22px;margin-bottom:18px;}
+.config-title{font-size:15px;font-weight:600;color:var(--info);margin-bottom:14px;}
+.config-ok{background:var(--success-bg);border:1px solid var(--success-border);border-radius:8px;padding:10px 16px;font-size:14px;color:var(--success);margin-bottom:12px;}
+.config-url-input{width:100%;background:#fff;border:1px solid var(--info-border);border-radius:8px;color:var(--text);font-size:14px;padding:10px 13px;outline:none;font-family:'Noto Sans TC',sans-serif;margin-bottom:10px;}
 .config-url-input:focus{border-color:var(--info);}
-.config-hint{font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;}
+.config-hint{font-size:13px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;}
 .config-hint strong{color:var(--text-secondary);}
+.warn-box{background:var(--warning-bg);border:1px solid var(--warning-border);border-radius:8px;padding:12px 16px;font-size:14px;color:#92400E;margin-top:12px;line-height:1.7;}
 
 /* ── LIGHTBOX ── */
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;}
-.lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.6);}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.lightbox img{max-width:92vw;max-height:92vh;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,0.6);}
 
 /* ── SPINNER ── */
-.spin{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:5px;}
-.spin-b{display:inline-block;width:12px;height:12px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--info);border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:5px;}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+.spin-b{display:inline-block;width:13px;height:13px;border:2px solid rgba(0,0,0,0.1);border-top-color:var(--info);border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
 @keyframes sp{to{transform:rotate(360deg);}}
+
+code{background:#F1F5F9;border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:13px;color:var(--red);font-family:monospace;}
+.code-block{background:#1E293B;color:#94A3B8;border-radius:10px;padding:16px;margin-top:10px;font-family:monospace;font-size:12px;line-height:1.9;overflow-x:auto;white-space:pre;}
 </style>
 </head>
 <body>
@@ -261,10 +261,8 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text
         <option value="helmet">消防帽</option>
       </select>
     </div>
-    <!-- 規格選擇（動態） -->
-    <div id="dynamic-spec-row"></div>
-    <!-- 庫存提示 -->
-    <div id="stock-indicator" style="margin-bottom:12px;"></div>
+    <div id="spec-row"></div>
+    <div id="stock-hint"></div>
     <div class="form-row">
       <label>損壞狀況描述 <span class="req">*</span></label>
       <textarea id="r-condition" placeholder="請詳細描述裝備損壞情形..."></textarea>
@@ -284,13 +282,13 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text
 
   <div class="card">
     <div class="card-title">📷 損壞照片</div>
-    <div class="photo-upload" id="photo-drop">
+    <div class="photo-upload">
       <input type="file" id="r-photos" accept="image/*" multiple onchange="handlePhotos(this)">
       <div class="photo-upload-icon">📸</div>
       <div class="photo-upload-text">點擊或拖曳上傳照片（可多張）</div>
-      <div class="photo-upload-note">照片會上傳至 Imgur，永久保存並顯示於審核記錄</div>
+      <div class="photo-upload-note">照片將透過 Google Apps Script 上傳至 Google Drive，並顯示於審核記錄</div>
     </div>
-    <div id="upload-progress"></div>
+    <div id="upload-prog"></div>
     <div class="photo-preview" id="photo-preview"></div>
   </div>
 
@@ -300,19 +298,21 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text
 <!-- ══ 庫存查詢 ══ -->
 <div class="view" id="view-inventory">
   <div class="page-title">庫存查詢</div>
-  <div class="page-sub">目前各裝備可更換之庫存狀況</div>
+  <div class="page-sub">各裝備可更換之庫存狀況（資料來自 Google Sheets）</div>
   <div class="divider"></div>
-  <div id="inv-cards"></div>
+  <div id="inv-cards">
+    <div class="empty-state"><div class="icon">🔄</div><p>載入中...</p></div>
+  </div>
 </div>
 
 <!-- ══ 管理後台 ══ -->
 <div class="view" id="view-admin">
   <div id="admin-gate-wrap" class="admin-gate">
     <div class="admin-login">
-      <div style="font-size:36px;margin-bottom:16px;">🔐</div>
+      <div style="font-size:40px;margin-bottom:18px;">🔐</div>
       <h3>管理員登入</h3>
       <p>請輸入管理密碼</p>
-      <div class="form-row" style="margin-bottom:16px;">
+      <div class="form-row" style="margin-bottom:18px;">
         <input type="password" id="admin-pw" placeholder="輸入密碼" onkeydown="if(event.key==='Enter')adminLogin()">
       </div>
       <button class="btn-primary" onclick="adminLogin()">登入</button>
@@ -324,39 +324,39 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text
     <div class="page-sub">裝備汰換申請審核與庫存管理</div>
     <div class="divider"></div>
 
-    <!-- 1. 同步列 -->
+    <!-- 同步列 -->
     <div class="sync-bar">
       <div class="sync-left">
         <div class="sync-dot" id="sync-dot"></div>
         <div>
           <div class="sync-title" id="sync-title">尚未連線 Google Sheets</div>
-          <div class="sync-sub" id="sync-sub">申請資料儲存於本機，設定 Sheets 後可多裝置共用</div>
+          <div class="sync-sub" id="sync-sub">設定連線後可多裝置共用資料</div>
         </div>
       </div>
       <button class="btn-sync" onclick="syncFromSheets()" id="sync-btn">🔄 立即從雲端同步</button>
     </div>
 
-    <!-- 2. 統計數字 -->
+    <!-- 統計 -->
     <div class="stats-grid" id="admin-stats"></div>
 
-    <!-- 3. 分頁標籤 -->
+    <!-- 分頁 -->
     <div class="admin-tabs">
-      <button class="admin-tab active" onclick="switchAdminTab('review',this)">📋 待審核申請</button>
+      <button class="admin-tab active" onclick="switchAdminTab('review',this)">📋 待審核</button>
       <button class="admin-tab" onclick="switchAdminTab('history',this)">📁 歷史申請</button>
       <button class="admin-tab" onclick="switchAdminTab('stock',this)">📦 庫存管理</button>
       <button class="admin-tab" onclick="switchAdminTab('settings',this)">⚙️ 連線設定</button>
     </div>
 
-    <!-- 分頁：待審核 -->
+    <!-- 待審核 -->
     <div class="admin-panel active" id="panel-review">
       <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterPending('pending',this)">⏳ 待審核</button>
-        <button class="filter-btn" onclick="filterPending('all',this)">全部</button>
+        <button class="filter-btn active" onclick="filterReview('pending',this)">⏳ 待審核</button>
+        <button class="filter-btn" onclick="filterReview('all',this)">全部</button>
       </div>
       <div id="review-list"></div>
     </div>
 
-    <!-- 分頁：歷史 -->
+    <!-- 歷史 -->
     <div class="admin-panel" id="panel-history">
       <div class="filter-bar">
         <button class="filter-btn active" onclick="filterHistory('all',this)">全部</button>
@@ -367,71 +367,148 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text
       <div class="load-more-btn" id="load-more-btn" onclick="loadMoreHistory()" style="display:none;">▼ 載入更多</div>
     </div>
 
-    <!-- 分頁：庫存 -->
+    <!-- 庫存管理 -->
     <div class="admin-panel" id="panel-stock">
       <div class="card" style="margin-bottom:0;">
         <div id="admin-inv-content"></div>
       </div>
     </div>
 
-    <!-- 分頁：設定 -->
+    <!-- 連線設定 -->
     <div class="admin-panel" id="panel-settings">
       <div class="config-panel">
         <div class="config-title">🔗 Google Sheets 連線設定</div>
         <div id="sheets-status-el"></div>
         <input class="config-url-input" id="sheets-url-input" placeholder="https://script.google.com/macros/s/YOUR_ID/exec">
         <div class="config-hint">
-          設定後所有申請即時寫入 Google Sheets，管理員可從雲端同步讀取所有人的資料。<br>
-          <strong>⚠️ 解決「看不到別人申請」的根本方法：</strong>申請資料預設只存在填表者的瀏覽器（localStorage）。設定 Sheets 後，每次提交都寫入雲端，承辦人點「立即從雲端同步」即可看到所有人的申請。
+          設定後，所有申請即時寫入雲端，管理員點「從雲端同步」即可看到所有人的申請記錄與照片。<br>
+          <strong>庫存也必須從這裡同步，才能在不同瀏覽器看到相同的庫存數字。</strong>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
           <button class="btn-sm" onclick="saveSheetsConfig()">💾 儲存網址</button>
-          <button class="btn-sm" onclick="testSheetsConnection()" id="test-btn">🔌 測試連線</button>
+          <button class="btn-sm" onclick="testConnection()" id="test-btn">🔌 測試連線</button>
         </div>
       </div>
       <div class="card">
-        <div class="card-title">📘 快速設定步驟</div>
-        <div style="font-size:13px;color:var(--text-secondary);line-height:2.2;">
-          <div><strong>1.</strong> 建立 Google 試算表，新增兩個工作表：<code style="background:#F3F4F6;padding:1px 6px;border-radius:3px;font-size:12px;color:var(--red);">申請記錄</code> 與 <code style="background:#F3F4F6;padding:1px 6px;border-radius:3px;font-size:12px;color:var(--red);">庫存</code></div>
-          <div><strong>2.</strong> 在試算表點「擴充功能」→「Apps Script」，貼上下方程式碼並儲存</div>
-          <div><strong>3.</strong> 點「部署」→「新增部署作業」→ 類型選「網頁應用程式」→ 存取權選「所有人」</div>
-          <div><strong>4.</strong> 複製部署網址貼到上方，點「儲存網址」再「測試連線」</div>
-          <div style="margin-top:12px;background:#1E293B;color:#94A3B8;border-radius:8px;padding:14px;font-family:monospace;font-size:11px;line-height:1.9;overflow-x:auto;white-space:pre;">const SS = SpreadsheetApp.getActive();
-function doPost(e){
-  const d=JSON.parse(e.postData.contents),ss=SS;
-  if(d.action==='addRequest') ss.getSheetByName('申請記錄').appendRow([d.id,d.unit,d.name,d.equipName,d.specs,d.condition,d.reason,'待審核','',d.submittedAt,'']);
-  if(d.action==='updateRequest'){const sh=ss.getSheetByName('申請記錄'),rows=sh.getDataRange().getValues();for(let i=1;i&lt;rows.length;i++){if(String(rows[i][0])===String(d.id)){sh.getRange(i+1,8).setValue(d.status==='approved'?'已核准':'未核准');sh.getRange(i+1,9).setValue(d.note||'');sh.getRange(i+1,11).setValue(new Date().toLocaleString('zh-TW'));break;}}}
-  if(d.action==='updateStock'){const sh=ss.getSheetByName('庫存'),rows=sh.getDataRange().getValues();let f=false;for(let i=1;i&lt;rows.length;i++){if(String(rows[i][0])===String(d.specId)){sh.getRange(i+1,4).setValue(d.stock);sh.getRange(i+1,5).setValue(new Date().toLocaleString('zh-TW'));f=true;break;}}if(!f)sh.appendRow([d.specId,d.equipName,d.spec,d.stock,new Date().toLocaleString('zh-TW')]);}
-  return ContentService.createTextOutput(JSON.stringify({ok:true})).setMimeType(ContentService.MimeType.JSON);
-}
-function doGet(e){
-  const ss=SS,a=e.parameter.action;
-  if(a==='ping') return out({ok:true});
-  if(a==='getAll'){
-    const toS=s=>s==='已核准'?'approved':s==='未核准'?'rejected':'pending';
-    const rr=ss.getSheetByName('申請記錄').getDataRange().getValues().slice(1);
-    const ir=ss.getSheetByName('庫存').getDataRange().getValues().slice(1);
-    return out({requests:rr.filter(r=>r[0]).map(r=>({id:String(r[0]),unit:r[1],name:r[2],equipName:r[3],specs:r[4],condition:r[5],reason:r[6],status:toS(r[7]),adminNote:r[8]||'',submittedAt:r[9],photoUrls:r[10]||''})),stockRows:ir.filter(r=>r[0]).map(r=>({specId:String(r[0]),equipName:r[1],spec:r[2],stock:Number(r[3]),updated:r[4]}))});
-  }
-  return out({ok:false});
-}
-function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);}</div>
+        <div class="card-title">📘 Apps Script 程式碼（請完整取代舊版）</div>
+        <div style="font-size:14px;color:var(--text-secondary);line-height:2;margin-bottom:12px;">
+          此為最新版程式碼，<strong style="color:var(--red);">請完整取代試算表中原有的 Apps Script 程式碼</strong>，然後重新部署（管理現有部署 → 編輯 → 版本選「新版本」）。
         </div>
+        <div class="warn-box">
+          ⚠️ 照片上傳採用 <strong>Google Drive</strong> 存放（透過 Apps Script 中轉），不需要 Imgur 帳號。上傳後會自動設為公開可檢視，並將連結存入試算表。
+        </div>
+        <div class="code-block" id="script-code">// ══ 第五大隊裝備汰換系統 Apps Script v3 ══
+// 請完整取代舊程式碼，部署後選「新版本」
+
+const SS = SpreadsheetApp.getActive();
+// Google Drive 存放照片的資料夾 ID（留空則自動建立）
+let PHOTO_FOLDER_ID = '';
+
+function getPhotoFolder() {
+  if (PHOTO_FOLDER_ID) return DriveApp.getFolderById(PHOTO_FOLDER_ID);
+  const folders = DriveApp.getFoldersByName('消防裝備汰換申請照片');
+  if (folders.hasNext()) { const f = folders.next(); PHOTO_FOLDER_ID = f.getId(); return f; }
+  const f = DriveApp.createFolder('消防裝備汰換申請照片');
+  PHOTO_FOLDER_ID = f.getId();
+  return f;
+}
+
+function doPost(e) {
+  const d = JSON.parse(e.postData.contents);
+  const action = d.action;
+
+  if (action === 'addRequest') {
+    SS.getSheetByName('申請記錄').appendRow([
+      d.id, d.unit, d.name, d.equipName, d.specs,
+      d.condition, d.reason, '待審核', '', d.submittedAt, d.photoUrls || ''
+    ]);
+  }
+
+  if (action === 'uploadPhoto') {
+    try {
+      const bytes = Utilities.base64Decode(d.base64);
+      const blob = Utilities.newBlob(bytes, d.mimeType, d.fileName);
+      const file = getPhotoFolder().createFile(blob);
+      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      const url = 'https://drive.google.com/uc?export=view&id=' + file.getId();
+      return out({ ok: true, url });
+    } catch (err) {
+      return out({ ok: false, error: err.toString() });
+    }
+  }
+
+  if (action === 'updateRequest') {
+    const sh = SS.getSheetByName('申請記錄');
+    const rows = sh.getDataRange().getValues();
+    for (let i = 1; i < rows.length; i++) {
+      if (String(rows[i][0]) === String(d.id)) {
+        sh.getRange(i+1, 8).setValue(d.status === 'approved' ? '已核准' : '未核准');
+        sh.getRange(i+1, 9).setValue(d.note || '');
+        sh.getRange(i+1, 11).setValue(new Date().toLocaleString('zh-TW'));
+        break;
+      }
+    }
+  }
+
+  if (action === 'updateStock') {
+    const sh = SS.getSheetByName('庫存');
+    const rows = sh.getDataRange().getValues();
+    let found = false;
+    for (let i = 1; i < rows.length; i++) {
+      if (String(rows[i][0]) === String(d.specId)) {
+        sh.getRange(i+1, 4).setValue(d.stock);
+        sh.getRange(i+1, 5).setValue(new Date().toLocaleString('zh-TW'));
+        found = true; break;
+      }
+    }
+    if (!found) {
+      sh.appendRow([d.specId, d.equipName, d.spec, d.stock, new Date().toLocaleString('zh-TW')]);
+    }
+  }
+
+  return out({ ok: true });
+}
+
+function doGet(e) {
+  const a = e.parameter.action;
+  if (a === 'ping') return out({ ok: true });
+  if (a === 'getAll') {
+    const toStatus = s => s === '已核准' ? 'approved' : s === '未核准' ? 'rejected' : 'pending';
+    const rr = SS.getSheetByName('申請記錄').getDataRange().getValues().slice(1);
+    const ir = SS.getSheetByName('庫存').getDataRange().getValues().slice(1);
+    return out({
+      requests: rr.filter(r => r[0]).map(r => ({
+        id: String(r[0]), unit: r[1], name: r[2], equipName: r[3],
+        specs: r[4], condition: r[5], reason: r[6],
+        status: toStatus(r[7]), adminNote: r[8] || '',
+        submittedAt: r[9], photoUrls: r[10] || ''
+      })),
+      stockRows: ir.filter(r => r[0]).map(r => ({
+        specId: String(r[0]), equipName: r[1], spec: r[2],
+        stock: Number(r[3]), updated: r[4]
+      }))
+    });
+  }
+  return out({ ok: false });
+}
+
+function out(o) {
+  return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
+}</div>
+        <button class="btn-sm" style="margin-top:12px;" onclick="copyScript()">📋 複製程式碼</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" style="display:none;" onclick="closeLightbox()">
   <img id="lightbox-img" src="">
 </div>
-
 <div class="toast" id="toast"><span id="toast-msg"></span></div>
 
 <script>
 // ══════════════════════════════════════════════
-//  CONFIG
+//  EQUIP CONFIG
 // ══════════════════════════════════════════════
 const EQUIP = {
   gloves:  {label:'消防手套',   st:'size',  specs:['7號','8號','9號','10號','11號','12號','13號']},
@@ -444,176 +521,218 @@ const EQUIP = {
 };
 const ST_LABEL = {size:'尺寸（號）', brand:'廠牌'};
 const ADMIN_PW = '2108';
-const DB_KEY   = 'fire5_v5';
-const SH_KEY   = 'fire5_sh_url';
-// Imgur client ID（免費上傳，不需帳號）
-const IMGUR_ID = 'f3a6d36f1fcdc13'; // public demo client
+const DB_KEY = 'fire5_v6';
+const SH_KEY = 'fire5_sh_url';
 
 // ══════════════════════════════════════════════
-//  DATA
+//  LOCAL CACHE（只存 Sheets 網址 + 本地暫存）
 // ══════════════════════════════════════════════
-function mkDefaultInv(){
-  const r=[];
-  Object.entries(EQUIP).forEach(([id,cfg])=>{
-    if(!cfg.specs.length) r.push({specId:id+'__ALL',equipId:id,equipName:cfg.label,spec:'',stock:0,updated:''});
-    else cfg.specs.forEach(s=>r.push({specId:id+'__'+s,equipId:id,equipName:cfg.label,spec:s,stock:0,updated:''}));
+function mkDefaultInv() {
+  const r = [];
+  Object.entries(EQUIP).forEach(([id,cfg]) => {
+    if (!cfg.specs.length) r.push({specId:id+'__ALL', equipId:id, equipName:cfg.label, spec:'', stock:0, updated:''});
+    else cfg.specs.forEach(s => r.push({specId:id+'__'+s, equipId:id, equipName:cfg.label, spec:s, stock:0, updated:''}));
   });
   return r;
 }
-function loadDB(){
-  try{const d=localStorage.getItem(DB_KEY);if(d)return JSON.parse(d);}catch(e){}
-  return {inventory:mkDefaultInv(),requests:[]};
+function loadDB() {
+  try { const d = localStorage.getItem(DB_KEY); if (d) return JSON.parse(d); } catch(e) {}
+  return {inventory: mkDefaultInv(), requests: []};
 }
-function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(DB));}
-let DB=loadDB();
-// Fill any missing specIds
-mkDefaultInv().forEach(d=>{if(!DB.inventory.find(i=>i.specId===d.specId))DB.inventory.push(d);});
+function saveDB() { try { localStorage.setItem(DB_KEY, JSON.stringify(DB)); } catch(e){} }
+let DB = loadDB();
+mkDefaultInv().forEach(d => { if (!DB.inventory.find(i => i.specId === d.specId)) DB.inventory.push(d); });
 
-function getSH(){return localStorage.getItem(SH_KEY)||'';}
-function setSH(u){localStorage.setItem(SH_KEY,u);}
-function now(){return new Date().toLocaleDateString('zh-TW')+' '+new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});}
+function getSH() { return localStorage.getItem(SH_KEY) || ''; }
+function setSH(u) { localStorage.setItem(SH_KEY, u); }
+function now() { return new Date().toLocaleDateString('zh-TW') + ' ' + new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'}); }
 
 // ══════════════════════════════════════════════
-//  SHEETS
+//  SHEETS API
 // ══════════════════════════════════════════════
-async function push(action,payload){
-  const url=getSH();if(!url)return;
-  try{await fetch(url,{method:'POST',body:JSON.stringify({action,...payload})});}
-  catch(e){console.warn('push err',e);}
+async function gsPush(action, payload) {
+  const url = getSH(); if (!url) return null;
+  try {
+    const r = await fetch(url, {method:'POST', body:JSON.stringify({action, ...payload})});
+    return await r.json();
+  } catch(e) { console.warn('push err', e); return null; }
 }
 
-async function syncFromSheets(){
-  const url=getSH();
-  if(!url){showToast('⚠️ 請先在「連線設定」設定 Sheets 網址','warning');return;}
-  const btn=document.getElementById('sync-btn');
-  btn.innerHTML='<span class="spin"></span>同步中...';btn.disabled=true;
+async function syncFromSheets() {
+  const url = getSH();
+  if (!url) { showToast('⚠️ 請先在「連線設定」設定 Sheets 網址','warning'); return; }
+  const btn = document.getElementById('sync-btn');
+  btn.innerHTML = '<span class="spin"></span>同步中...'; btn.disabled = true;
   setSyncUI('syncing');
-  try{
-    const r=await fetch(`${url}?action=getAll&_=${Date.now()}`);
-    const d=await r.json();
-    if(Array.isArray(d.requests)){
-      if(d.stockRows) d.stockRows.forEach(sr=>{
-        const li=DB.inventory.find(i=>i.specId===sr.specId);
-        if(li){li.stock=Number(sr.stock)||0;li.updated=sr.updated||'';}
+  try {
+    const r = await fetch(`${url}?action=getAll&_=${Date.now()}`);
+    const d = await r.json();
+    if (Array.isArray(d.requests)) {
+      // 更新庫存
+      if (d.stockRows) d.stockRows.forEach(sr => {
+        const li = DB.inventory.find(i => i.specId === sr.specId);
+        if (li) { li.stock = Number(sr.stock) || 0; li.updated = String(sr.updated || ''); }
       });
-      d.requests.forEach(sr=>{
-        const id=String(sr.id);
-        const li=DB.requests.find(x=>x.id===id);
-        if(li){li.status=sr.status;li.adminNote=sr.adminNote||'';}
-        else DB.requests.push({
-          id,unit:sr.unit,name:sr.name,
-          equipId:Object.keys(EQUIP).find(k=>EQUIP[k].label===sr.equipName)||'',
-          equipName:sr.equipName,specs:sr.specs||'',
-          condition:sr.condition,reason:sr.reason,
-          status:sr.status||'pending',adminNote:sr.adminNote||'',
-          submittedAt:sr.submittedAt||'',
-          photoUrls:(sr.photoUrls||'').split(',').filter(Boolean)
-        });
+      // 合併申請（以 Sheets 為主）
+      d.requests.forEach(sr => {
+        const id = String(sr.id);
+        const li = DB.requests.find(x => x.id === id);
+        const urls = typeof sr.photoUrls === 'string'
+          ? sr.photoUrls.split(',').filter(Boolean)
+          : (Array.isArray(sr.photoUrls) ? sr.photoUrls : []);
+        if (li) {
+          li.status = sr.status;
+          li.adminNote = sr.adminNote || '';
+          if (urls.length) li.photoUrls = urls; // 更新照片
+        } else {
+          DB.requests.push({
+            id, unit:sr.unit, name:sr.name,
+            equipId: Object.keys(EQUIP).find(k => EQUIP[k].label === sr.equipName) || '',
+            equipName: sr.equipName, specs: sr.specs || '',
+            condition: sr.condition, reason: sr.reason,
+            status: sr.status || 'pending', adminNote: sr.adminNote || '',
+            submittedAt: String(sr.submittedAt || ''),
+            photoUrls: urls
+          });
+        }
       });
-      DB.requests.sort((a,b)=>b.id.localeCompare(a.id));
+      DB.requests.sort((a,b) => b.id.localeCompare(a.id));
       saveDB();
       renderAdminPanel();
-      setSyncUI('connected',`最後同步：${now()}`);
+      renderInventoryCards(); // also refresh public inventory
+      setSyncUI('connected', `最後同步：${now()}`);
       showToast(`✅ 同步完成，共 ${d.requests.length} 筆`,'success');
+    } else {
+      throw new Error('bad response');
     }
-  }catch(e){
+  } catch(e) {
     setSyncUI('err');
     showToast('❌ 同步失敗，請確認網址與部署設定','warning');
   }
-  btn.innerHTML='🔄 立即從雲端同步';btn.disabled=false;
+  btn.innerHTML = '🔄 立即從雲端同步'; btn.disabled = false;
 }
 
-function setSyncUI(s,sub=''){
-  const dot=document.getElementById('sync-dot');
-  const title=document.getElementById('sync-title');
-  const sub_el=document.getElementById('sync-sub');
-  dot.className='sync-dot';
-  if(s==='connected'){dot.classList.add('connected');title.textContent='已連線 Google Sheets';}
-  else if(s==='syncing'){dot.classList.add('syncing');title.textContent='同步中...';}
-  else if(s==='err'){title.textContent='同步失敗';}
-  else{title.textContent='尚未連線 Google Sheets';}
-  sub_el.textContent=sub||(getSH()?'已設定網址，點右側按鈕同步':'設定 Sheets 後可多裝置共用資料');
+function setSyncUI(s, sub='') {
+  const dot = document.getElementById('sync-dot');
+  const title = document.getElementById('sync-title');
+  const subEl = document.getElementById('sync-sub');
+  dot.className = 'sync-dot';
+  if (s === 'connected') { dot.classList.add('connected'); title.textContent = '已連線 Google Sheets'; }
+  else if (s === 'syncing') { dot.classList.add('syncing'); title.textContent = '同步中...'; }
+  else if (s === 'err') { title.textContent = '同步失敗，請重試'; }
+  else { title.textContent = '尚未連線 Google Sheets'; }
+  subEl.textContent = sub || (getSH() ? '已設定網址，點右側同步' : '設定 Sheets 後可多裝置共用資料');
 }
 
-function saveSheetsConfig(){
-  const url=document.getElementById('sheets-url-input').value.trim();
-  if(!url){showToast('⚠️ 請輸入網址','warning');return;}
-  setSH(url);updateSheetsStatus();
+function saveSheetsConfig() {
+  const url = document.getElementById('sheets-url-input').value.trim();
+  if (!url) { showToast('⚠️ 請輸入網址','warning'); return; }
+  setSH(url); updateSheetsStatus();
   showToast('✅ 已儲存，請點「測試連線」確認','success');
 }
-function updateSheetsStatus(){
-  const url=getSH();
-  const el=document.getElementById('sheets-status-el');
-  const inp=document.getElementById('sheets-url-input');
-  if(url){inp.value=url;el.innerHTML=`<div class="config-connected">✅ 已設定：${url.slice(0,60)}...</div>`;}
-  else el.innerHTML='';
-  setSyncUI(url?'connected':'none');
+function updateSheetsStatus() {
+  const url = getSH();
+  const el = document.getElementById('sheets-status-el');
+  const inp = document.getElementById('sheets-url-input');
+  if (url) {
+    inp.value = url;
+    el.innerHTML = `<div class="config-ok">✅ 已設定：${url.slice(0,62)}...</div>`;
+  } else { el.innerHTML = ''; }
+  setSyncUI(url ? 'connected' : 'none');
 }
-async function testSheetsConnection(){
-  const url=getSH();if(!url){showToast('⚠️ 請先儲存網址','warning');return;}
-  const btn=document.getElementById('test-btn');
-  btn.innerHTML='<span class="spin-b"></span>測試中...';btn.disabled=true;
-  try{const r=await fetch(`${url}?action=ping`);const d=await r.json();
-    showToast(d.ok?'✅ 連線成功！':'❌ Script 回應異常',d.ok?'success':'warning');
-  }catch(e){showToast('❌ 無法連線，請確認網址與部署','warning');}
-  btn.innerHTML='🔌 測試連線';btn.disabled=false;
+async function testConnection() {
+  const url = getSH(); if (!url) { showToast('⚠️ 請先儲存網址','warning'); return; }
+  const btn = document.getElementById('test-btn');
+  btn.innerHTML = '<span class="spin-b"></span>測試中...'; btn.disabled = true;
+  try {
+    const r = await fetch(`${url}?action=ping`); const d = await r.json();
+    showToast(d.ok ? '✅ 連線成功！' : '❌ Script 回應異常', d.ok ? 'success' : 'warning');
+  } catch(e) { showToast('❌ 無法連線，請確認網址與部署','warning'); }
+  btn.innerHTML = '🔌 測試連線'; btn.disabled = false;
 }
 
 // ══════════════════════════════════════════════
-//  IMGUR UPLOAD
+//  PHOTO UPLOAD via Apps Script
 // ══════════════════════════════════════════════
-async function uploadToImgur(file){
-  const fd=new FormData();fd.append('image',file);
-  const r=await fetch('https://api.imgur.com/3/image',{method:'POST',headers:{Authorization:'Client-ID '+IMGUR_ID},body:fd});
-  const d=await r.json();
-  if(d.success) return d.data.link;
-  throw new Error('Imgur upload failed');
-}
+let pendingPhotoUrls = [];
 
-let pendingPhotoUrls=[];
-
-async function handlePhotos(input){
-  const files=Array.from(input.files);
-  if(!files.length)return;
-  const prog=document.getElementById('upload-progress');
-  const preview=document.getElementById('photo-preview');
-  prog.innerHTML=`<div class="uploading-indicator"><span class="spin-b"></span>上傳中（0/${files.length}）...</div>`;
-  pendingPhotoUrls=[];
-  let done=0;
-  for(const f of files){
-    // Show local preview immediately
-    const reader=new FileReader();
-    await new Promise(res=>{reader.onload=e=>{
-      const img=document.createElement('img');img.src=e.target.result;img.className='photo-thumb';
-      img.onclick=()=>openLightbox(e.target.result);preview.appendChild(img);res();
-    };reader.readAsDataURL(f);});
-    // Upload
-    try{
-      const url=await uploadToImgur(f);
-      pendingPhotoUrls.push(url);
-      done++;
-      prog.innerHTML=`<div class="uploading-indicator"><span class="spin-b"></span>上傳中（${done}/${files.length}）...</div>`;
-    }catch(e){
-      pendingPhotoUrls.push(''); // failed, skip
-      done++;
-    }
+async function handlePhotos(input) {
+  const files = Array.from(input.files);
+  if (!files.length) return;
+  pendingPhotoUrls = [];
+  const progEl = document.getElementById('upload-prog');
+  const preview = document.getElementById('photo-preview');
+  preview.innerHTML = '';
+  const url = getSH();
+  if (!url) {
+    progEl.innerHTML = `<div style="font-size:13px;color:var(--warning);margin-top:8px;">⚠️ 尚未設定 Sheets 連線，照片無法上傳至雲端，僅供本次預覽</div>`;
+    // still show local previews
+    files.forEach(f => {
+      const rd = new FileReader();
+      rd.onload = e => {
+        const img = document.createElement('img');
+        img.src = e.target.result; img.className = 'photo-thumb';
+        img.onclick = () => openLightbox(e.target.result);
+        preview.appendChild(img);
+      };
+      rd.readAsDataURL(f);
+    });
+    return;
   }
-  prog.innerHTML=`<div style="font-size:12px;color:var(--success);margin-top:8px;">✅ 已上傳 ${pendingPhotoUrls.filter(Boolean).length}/${files.length} 張</div>`;
+  progEl.innerHTML = `<div class="upload-prog"><span class="spin-b"></span>上傳照片中 0/${files.length}...</div>`;
+  let done = 0;
+  for (const f of files) {
+    // local preview
+    await new Promise(res => {
+      const rd = new FileReader();
+      rd.onload = e => {
+        const img = document.createElement('img');
+        img.src = e.target.result; img.className = 'photo-thumb';
+        img.onclick = () => openLightbox(e.target.result);
+        preview.appendChild(img); res();
+      };
+      rd.readAsDataURL(f);
+    });
+    // upload via Apps Script
+    try {
+      const base64 = await fileToBase64(f);
+      const res = await gsPush('uploadPhoto', {
+        base64: base64.split(',')[1],
+        mimeType: f.type,
+        fileName: f.name
+      });
+      if (res && res.ok) pendingPhotoUrls.push(res.url);
+      else pendingPhotoUrls.push('');
+    } catch(e) { pendingPhotoUrls.push(''); }
+    done++;
+    progEl.innerHTML = `<div class="upload-prog"><span class="spin-b"></span>上傳照片中 ${done}/${files.length}...</div>`;
+  }
+  const ok = pendingPhotoUrls.filter(Boolean).length;
+  progEl.innerHTML = `<div style="font-size:14px;color:var(--success);margin-top:8px;">✅ 已上傳 ${ok}/${files.length} 張至 Google Drive</div>`;
+}
+
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const rd = new FileReader();
+    rd.onload = e => res(e.target.result);
+    rd.onerror = rej;
+    rd.readAsDataURL(file);
+  });
 }
 
 // ══════════════════════════════════════════════
 //  NAV
 // ══════════════════════════════════════════════
-function switchView(v){
-  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));
+function switchView(v) {
+  document.querySelectorAll('.view').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(x => x.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
   document.getElementById('nav-'+v).classList.add('active');
-  if(v==='inventory')renderInventoryCards();
+  if (v === 'inventory') renderInventoryCards();
 }
-function switchAdminTab(tab,btn){
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+function switchAdminTab(tab, btn) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('panel-'+tab).classList.add('active');
 }
@@ -621,288 +740,310 @@ function switchAdminTab(tab,btn){
 // ══════════════════════════════════════════════
 //  申請表單
 // ══════════════════════════════════════════════
-function onEquipChange(){
-  const key=document.getElementById('r-equip').value;
-  renderSpecRow(key);
-  updateStockIndicator(key,'');
-}
-
-function renderSpecRow(key){
-  const wrap=document.getElementById('dynamic-spec-row');
-  if(!key||!EQUIP[key]||EQUIP[key].st==='none'){wrap.innerHTML='';return;}
-  const cfg=EQUIP[key];
-  wrap.innerHTML=`<div class="form-row">
-    <label>${ST_LABEL[cfg.st]} <span class="req">*</span></label>
-    <select id="df-spec" onchange="updateStockIndicator('${key}',this.value)">
-      <option value="">-- 請選擇 --</option>
-      ${cfg.specs.map(s=>`<option>${s}</option>`).join('')}
-    </select>
-  </div>`;
-}
-
-function updateStockIndicator(key,spec){
-  const el=document.getElementById('stock-indicator');
-  if(!key){el.innerHTML='';return;}
-  let item;
-  if(EQUIP[key].st==='none'){
-    item=DB.inventory.find(i=>i.specId===key+'__ALL');
+function onEquipChange() {
+  const key = document.getElementById('r-equip').value;
+  document.getElementById('spec-row').innerHTML = '';
+  document.getElementById('stock-hint').innerHTML = '';
+  if (!key) return;
+  const cfg = EQUIP[key];
+  if (cfg.st !== 'none') {
+    document.getElementById('spec-row').innerHTML = `
+      <div class="form-row">
+        <label>${ST_LABEL[cfg.st]} <span class="req">*</span></label>
+        <select id="df-spec" onchange="onSpecChange('${key}',this.value)">
+          <option value="">-- 請選擇 --</option>
+          ${cfg.specs.map(s=>`<option>${s}</option>`).join('')}
+        </select>
+      </div>`;
   } else {
-    if(!spec){el.innerHTML='';return;}  // 還沒選規格就不顯示
-    item=DB.inventory.find(i=>i.specId===key+'__'+spec);
+    // No spec, show stock immediately
+    showStockHint(key, '');
   }
-  if(!item){el.innerHTML='';return;}
-  const s=item.stock;
-  const specLabel=spec?`（${spec}）`:'';
-  if(s===0)      el.innerHTML=`<div class="inv-badge badge-out">❌ ${item.equipName}${specLabel} 目前無庫存</div>`;
-  else if(s<=2)  el.innerHTML=`<div class="inv-badge badge-low">⚠️ 庫存偏低：剩餘 ${s} 件</div>`;
-  else           el.innerHTML=`<div class="inv-badge badge-ok">✅ 庫存充足：剩餘 ${s} 件</div>`;
 }
 
-async function submitRequest(){
-  const unit=document.getElementById('r-unit').value;
-  const name=document.getElementById('r-name').value.trim();
-  const equipKey=document.getElementById('r-equip').value;
-  const condition=document.getElementById('r-condition').value.trim();
-  const reason=document.getElementById('r-reason').value;
-  if(!unit||!name||!equipKey||!condition||!reason){showToast('⚠️ 請填寫所有必填欄位','warning');return;}
-  const cfg=EQUIP[equipKey];
-  const spec=cfg.st!=='none'?(document.getElementById('df-spec')||{value:''}).value:'';
-  if(cfg.st!=='none'&&!spec){showToast(`⚠️ 請選擇「${ST_LABEL[cfg.st]}」`,'warning');return;}
-  const specsStr=spec?`${ST_LABEL[cfg.st]}：${spec}`:'';
-  const btn=document.getElementById('submit-btn');
-  btn.innerHTML='<span class="spin"></span>提交中...';btn.disabled=true;
-  const req={
-    id:'req_'+Date.now(),unit,name,
-    equipId:equipKey,equipName:cfg.label,specs:specsStr,
-    condition,reason,status:'pending',adminNote:'',
-    submittedAt:now(),photoUrls:pendingPhotoUrls.filter(Boolean)
+function onSpecChange(key, spec) {
+  showStockHint(key, spec);
+}
+
+function showStockHint(key, spec) {
+  const el = document.getElementById('stock-hint');
+  let specId = spec ? key+'__'+spec : key+'__ALL';
+  const item = DB.inventory.find(i => i.specId === specId);
+  if (!item) { el.innerHTML = ''; return; }
+  const s = item.stock;
+  const label = spec ? `（${spec}）` : '';
+  if (s === 0)     el.innerHTML = `<div class="inv-badge badge-out">❌ ${item.equipName}${label} 目前無庫存</div>`;
+  else if (s <= 2) el.innerHTML = `<div class="inv-badge badge-low">⚠️ 庫存偏低：剩餘 ${s} 件</div>`;
+  else             el.innerHTML = `<div class="inv-badge badge-ok">✅ 庫存充足：剩餘 ${s} 件</div>`;
+}
+
+async function submitRequest() {
+  const unit      = document.getElementById('r-unit').value;
+  const name      = document.getElementById('r-name').value.trim();
+  const equipKey  = document.getElementById('r-equip').value;
+  const condition = document.getElementById('r-condition').value.trim();
+  const reason    = document.getElementById('r-reason').value;
+  if (!unit||!name||!equipKey||!condition||!reason) { showToast('⚠️ 請填寫所有必填欄位','warning'); return; }
+  const cfg  = EQUIP[equipKey];
+  const spec = cfg.st !== 'none' ? (document.getElementById('df-spec')||{value:''}).value : '';
+  if (cfg.st !== 'none' && !spec) { showToast(`⚠️ 請選擇「${ST_LABEL[cfg.st]}」`,'warning'); return; }
+  const specsStr = spec ? `${ST_LABEL[cfg.st]}：${spec}` : '';
+  const btn = document.getElementById('submit-btn');
+  btn.innerHTML = '<span class="spin"></span>提交中...'; btn.disabled = true;
+  const req = {
+    id: 'req_'+Date.now(), unit, name,
+    equipId: equipKey, equipName: cfg.label, specs: specsStr,
+    condition, reason, status: 'pending', adminNote: '',
+    submittedAt: now(),
+    photoUrls: pendingPhotoUrls.filter(Boolean)
   };
-  DB.requests.unshift(req);saveDB();
-  await push('addRequest',{
-    id:req.id,unit,name,equipName:cfg.label,specs:specsStr,
-    condition,reason,submittedAt:req.submittedAt,
-    photoUrls:req.photoUrls.join(',')
+  DB.requests.unshift(req); saveDB();
+  await gsPush('addRequest', {
+    id: req.id, unit, name, equipName: cfg.label, specs: specsStr,
+    condition, reason, submittedAt: req.submittedAt,
+    photoUrls: req.photoUrls.join(',')
   });
   showToast('✅ 申請已提交，由大隊承辦人審核','success');
-  ['r-unit','r-name','r-equip','r-condition','r-reason'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('dynamic-spec-row').innerHTML='';
-  document.getElementById('stock-indicator').innerHTML='';
-  document.getElementById('photo-preview').innerHTML='';
-  document.getElementById('upload-progress').innerHTML='';
-  document.getElementById('r-photos').value='';
-  pendingPhotoUrls=[];
-  btn.innerHTML='📤 提交汰換申請';btn.disabled=false;
+  ['r-unit','r-name','r-equip','r-condition','r-reason'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('spec-row').innerHTML = '';
+  document.getElementById('stock-hint').innerHTML = '';
+  document.getElementById('photo-preview').innerHTML = '';
+  document.getElementById('upload-prog').innerHTML = '';
+  document.getElementById('r-photos').value = '';
+  pendingPhotoUrls = [];
+  btn.innerHTML = '📤 提交汰換申請'; btn.disabled = false;
 }
 
 // ══════════════════════════════════════════════
 //  庫存查詢頁
 // ══════════════════════════════════════════════
-function renderInventoryCards(){
-  const wrap=document.getElementById('inv-cards');wrap.innerHTML='';
-  Object.entries(EQUIP).forEach(([id,cfg])=>{
-    const items=DB.inventory.filter(i=>i.equipId===id);
-    const total=items.reduce((a,b)=>a+b.stock,0);
-    const cls=total===0?'stock-out':total<=3?'stock-low':'stock-ok';
-    let detail='';
-    if(cfg.st!=='none'){
-      detail=`<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
-        ${items.map(it=>{
-          const c=it.stock===0?'stock-out':it.stock<=2?'stock-low':'stock-ok';
-          return `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:8px 14px;text-align:center;min-width:68px;">
-            <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px;">${it.spec}</div>
-            <div class="stock-num ${c}" style="font-size:18px;">${it.stock}</div>
+function renderInventoryCards() {
+  const wrap = document.getElementById('inv-cards'); wrap.innerHTML = '';
+  Object.entries(EQUIP).forEach(([id, cfg]) => {
+    const items = DB.inventory.filter(i => i.equipId === id);
+    const total = items.reduce((a,b) => a+b.stock, 0);
+    const cls = total === 0 ? 'stock-out' : total <= 3 ? 'stock-low' : 'stock-ok';
+    let detail = '';
+    if (cfg.st !== 'none') {
+      detail = `<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
+        ${items.map(it => {
+          const c = it.stock===0?'stock-out':it.stock<=2?'stock-low':'stock-ok';
+          return `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 16px;text-align:center;min-width:74px;">
+            <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">${it.spec}</div>
+            <div class="${c}" style="font-size:20px;font-weight:700;">${it.stock}</div>
           </div>`;
         }).join('')}
       </div>`;
     }
-    wrap.innerHTML+=`<div class="card">
+    wrap.innerHTML += `<div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;">
-        <span style="font-size:15px;font-weight:700;">${cfg.label}</span>
-        <span class="stock-num ${cls}" style="font-size:24px;">${total}</span>
+        <span style="font-size:17px;font-weight:700;">${cfg.label}</span>
+        <span class="${cls}" style="font-size:26px;font-weight:700;">${total}</span>
       </div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">總庫存</div>
+      <div style="font-size:14px;color:var(--text-muted);margin-top:3px;">總庫存</div>
       ${detail}
     </div>`;
   });
 }
 
 // ══════════════════════════════════════════════
-//  管理後台
+//  ADMIN
 // ══════════════════════════════════════════════
-function adminLogin(){
-  if(document.getElementById('admin-pw').value===ADMIN_PW){
-    document.getElementById('admin-gate-wrap').style.display='none';
-    document.getElementById('admin-content').style.display='block';
+function adminLogin() {
+  if (document.getElementById('admin-pw').value === ADMIN_PW) {
+    document.getElementById('admin-gate-wrap').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
     updateSheetsStatus();
     renderAdminPanel();
-    if(getSH()) syncFromSheets();
+    if (getSH()) syncFromSheets();
   } else showToast('❌ 密碼錯誤','warning');
 }
 
-function renderAdminPanel(){
+function renderAdminPanel() {
   renderStats();
-  renderReviewList('pending');
-  renderHistoryList('all');
+  renderReviewList(reviewFilter);
+  renderHistoryList(histFilter);
   renderAdminInventory();
 }
 
-function renderStats(){
-  const pending=DB.requests.filter(r=>r.status==='pending').length;
-  const approved=DB.requests.filter(r=>r.status==='approved').length;
-  const outEquips=new Set(DB.inventory.filter(i=>i.stock===0).map(i=>i.equipId)).size;
-  document.getElementById('admin-stats').innerHTML=`
+function renderStats() {
+  const pending   = DB.requests.filter(r => r.status === 'pending').length;
+  const approved  = DB.requests.filter(r => r.status === 'approved').length;
+  const outEquips = new Set(DB.inventory.filter(i => i.stock === 0).map(i => i.equipId)).size;
+  document.getElementById('admin-stats').innerHTML = `
     <div class="stat-card"><div class="stat-num" style="color:#D97706">${pending}</div><div class="stat-label">待審核申請</div></div>
     <div class="stat-card"><div class="stat-num" style="color:#16A34A">${approved}</div><div class="stat-label">已核准</div></div>
     <div class="stat-card"><div class="stat-num" style="color:#C62828">${outEquips}</div><div class="stat-label">有缺貨裝備</div></div>`;
 }
 
-// ── 待審核分頁 ──
-let reviewFilter='pending';
-function filterPending(f,btn){
-  reviewFilter=f;
-  document.querySelectorAll('#panel-review .filter-btn').forEach(b=>b.classList.remove('active'));
+// ── 待審核 ──
+let reviewFilter = 'pending';
+function filterReview(f, btn) {
+  reviewFilter = f;
+  document.querySelectorAll('#panel-review .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderReviewList(f);
 }
-function renderReviewList(filter){
-  const el=document.getElementById('review-list');
-  let items=filter==='all'?DB.requests:DB.requests.filter(r=>r.status===filter);
-  if(!items.length){el.innerHTML=`<div class="empty-state"><div class="icon">📭</div><p>沒有符合條件的申請<br><small>若已設定 Sheets，請先點「立即從雲端同步」</small></p></div>`;return;}
-  el.innerHTML=items.map(r=>reqCard(r,true)).join('');
+function renderReviewList(filter) {
+  const el = document.getElementById('review-list');
+  const items = filter === 'all' ? DB.requests : DB.requests.filter(r => r.status === filter);
+  if (!items.length) {
+    el.innerHTML = `<div class="empty-state"><div class="icon">📭</div><p>沒有符合條件的申請<br><small>若已設定 Sheets，請點「立即從雲端同步」</small></p></div>`; return;
+  }
+  el.innerHTML = items.map(r => reqCard(r, true)).join('');
 }
 
-// ── 歷史分頁 ──
-let histFilter='all',histPage=0;
-const HIST_PER_PAGE=10;
-function filterHistory(f,btn){
-  histFilter=f;histPage=0;
-  document.querySelectorAll('#panel-history .filter-btn').forEach(b=>b.classList.remove('active'));
+// ── 歷史 ──
+let histFilter = 'all', histPage = 0;
+const HIST_PER = 10;
+function filterHistory(f, btn) {
+  histFilter = f; histPage = 0;
+  document.querySelectorAll('#panel-history .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderHistoryList(f);
 }
-function renderHistoryList(f){
-  const el=document.getElementById('history-list');
-  let items=DB.requests.filter(r=>r.status!=='pending');
-  if(f!=='all') items=items.filter(r=>r.status===f);
-  if(!items.length){el.innerHTML=`<div class="empty-state"><div class="icon">📁</div><p>目前沒有歷史記錄</p></div>`;document.getElementById('load-more-btn').style.display='none';return;}
-  const show=items.slice(0,(histPage+1)*HIST_PER_PAGE);
-  el.innerHTML=show.map(r=>reqCard(r,false)).join('');
-  document.getElementById('load-more-btn').style.display=show.length<items.length?'block':'none';
+function renderHistoryList(f) {
+  const el = document.getElementById('history-list');
+  let items = DB.requests.filter(r => r.status !== 'pending');
+  if (f !== 'all') items = items.filter(r => r.status === f);
+  if (!items.length) {
+    el.innerHTML = `<div class="empty-state"><div class="icon">📁</div><p>目前沒有歷史記錄</p></div>`;
+    document.getElementById('load-more-btn').style.display = 'none'; return;
+  }
+  const show = items.slice(0, (histPage+1)*HIST_PER);
+  el.innerHTML = show.map(r => reqCard(r, false)).join('');
+  document.getElementById('load-more-btn').style.display = show.length < items.length ? 'block' : 'none';
 }
-function loadMoreHistory(){
-  histPage++;renderHistoryList(histFilter);
-}
+function loadMoreHistory() { histPage++; renderHistoryList(histFilter); }
 
 // ── 申請卡片 ──
-function reqCard(r,showActions){
-  const inv=DB.inventory.filter(i=>i.equipId===r.equipId);
-  const total=inv.reduce((a,b)=>a+b.stock,0);
-  const stockTag=r.status==='pending'
-    ?(total>0?`<span class="status-tag" style="background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);">庫存 ${total} 件</span>`:`<span class="status-tag tag-nostock">無庫存</span>`):'';
-  const statusTag=r.status==='approved'?`<span class="status-tag tag-approved">✅ 已核准</span>`
-    :r.status==='rejected'?`<span class="status-tag tag-rejected">❌ 未核准</span>`:`<span class="status-tag tag-pending">⏳ 待審核</span>`;
-  const actions=showActions&&r.status==='pending'?`
+function reqCard(r, showActions) {
+  const inv   = DB.inventory.filter(i => i.equipId === r.equipId);
+  const total = inv.reduce((a,b) => a+b.stock, 0);
+  const stockTag = r.status === 'pending'
+    ? (total > 0
+        ? `<span class="status-tag" style="background:var(--success-bg);color:var(--success);border:1px solid var(--success-border);">庫存 ${total} 件</span>`
+        : `<span class="status-tag tag-nostock">無庫存</span>`)
+    : '';
+  const statusTag = r.status === 'approved'
+    ? `<span class="status-tag tag-approved">✅ 已核准</span>`
+    : r.status === 'rejected'
+    ? `<span class="status-tag tag-rejected">❌ 未核准</span>`
+    : `<span class="status-tag tag-pending">⏳ 待審核</span>`;
+  const actions = showActions && r.status === 'pending' ? `
     <button class="btn-success" onclick="approveReq('${r.id}')">✅ 核准</button>
-    <button class="btn-danger" onclick="rejectReq('${r.id}')">❌ 不核准</button>`:'';
-  const photos=Array.isArray(r.photoUrls)&&r.photoUrls.length>0
-    ?`<div class="req-photos-col">
-        ${r.photoUrls.map(u=>`<img class="req-thumb" src="${u}" onclick="openLightbox('${u}')" title="點擊放大">`).join('')}
+    <button class="btn-danger" onclick="rejectReq('${r.id}')">❌ 不核准</button>` : '';
+  const urls = Array.isArray(r.photoUrls) ? r.photoUrls.filter(Boolean) : [];
+  const photosHTML = urls.length
+    ? `<div class="req-photos-col">
+        ${urls.map(u => `<img class="req-thumb" src="${u}" onclick="openLightbox('${u}')" title="點擊放大">`).join('')}
       </div>`
-    :'<div class="req-photos-col empty"></div>';
+    : `<div class="req-photos-col hidden"></div>`;
   return `<div class="req-card ${r.status}">
     <div class="req-body">
       <div class="req-info">
         <div class="req-name">🪖 ${r.equipName}</div>
-        <div class="req-meta"><span>🏢 ${r.unit}</span><span>👤 ${r.name}</span><span class="timestamp">${r.submittedAt}</span></div>
-        ${r.specs?`<div class="req-detail">📐 ${r.specs}</div>`:''}
+        <div class="req-meta">
+          <span>🏢 ${r.unit}</span><span>👤 ${r.name}</span>
+          <span class="timestamp">${r.submittedAt}</span>
+        </div>
+        ${r.specs ? `<div class="req-detail">📐 ${r.specs}</div>` : ''}
         <div class="req-detail">原因：${r.reason}</div>
         <div class="req-detail" style="color:var(--text-muted);">${r.condition}</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">${statusTag}${stockTag}</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;">${statusTag}${stockTag}</div>
       </div>
-      ${photos}
+      ${photosHTML}
     </div>
     <div class="req-foot">
-      <input class="note-input" placeholder="承辦人備註..." value="${(r.adminNote||'').replace(/"/g,'&quot;')}" onchange="saveNote('${r.id}',this.value)">
+      <input class="note-input" placeholder="承辦人備註..."
+        value="${(r.adminNote||'').replace(/"/g,'&quot;')}"
+        onchange="saveNote('${r.id}',this.value)">
       ${actions}
     </div>
   </div>`;
 }
 
-async function approveReq(id){
-  const req=DB.requests.find(r=>r.id===id);if(!req)return;
-  req.status='approved';
-  // 扣庫存
-  const specs=req.specs||'';
-  const specVal=specs.includes('：')?specs.split('：')[1]:'';
-  const sId=specVal?req.equipId+'__'+specVal:req.equipId+'__ALL';
-  const item=DB.inventory.find(i=>i.specId===sId)||DB.inventory.find(i=>i.equipId===req.equipId);
-  if(item&&item.stock>0){item.stock--;item.updated=now();await push('updateStock',{specId:item.specId,equipName:item.equipName,spec:item.spec,stock:item.stock});}
-  saveDB();renderAdminPanel();
+async function approveReq(id) {
+  const req = DB.requests.find(r => r.id === id); if (!req) return;
+  req.status = 'approved';
+  const specs = req.specs || '';
+  const specVal = specs.includes('：') ? specs.split('：')[1] : '';
+  const sId = specVal ? req.equipId+'__'+specVal : req.equipId+'__ALL';
+  const item = DB.inventory.find(i => i.specId === sId) || DB.inventory.find(i => i.equipId === req.equipId);
+  if (item && item.stock > 0) {
+    item.stock--; item.updated = now();
+    await gsPush('updateStock', {specId:item.specId, equipName:item.equipName, spec:item.spec, stock:item.stock});
+  }
+  saveDB(); renderAdminPanel();
   showToast('✅ 已核准，庫存扣除','success');
-  await push('updateRequest',{id,status:'approved',note:req.adminNote||''});
+  await gsPush('updateRequest', {id, status:'approved', note:req.adminNote||''});
 }
-async function rejectReq(id){
-  const req=DB.requests.find(r=>r.id===id);if(!req)return;
-  req.status='rejected';saveDB();renderAdminPanel();
+async function rejectReq(id) {
+  const req = DB.requests.find(r => r.id === id); if (!req) return;
+  req.status = 'rejected'; saveDB(); renderAdminPanel();
   showToast('❌ 已標記為不核准','warning');
-  await push('updateRequest',{id,status:'rejected',note:req.adminNote||''});
+  await gsPush('updateRequest', {id, status:'rejected', note:req.adminNote||''});
 }
-async function saveNote(id,note){
-  const req=DB.requests.find(r=>r.id===id);
-  if(req){req.adminNote=note;saveDB();await push('updateRequest',{id,status:req.status,note});}
+async function saveNote(id, note) {
+  const req = DB.requests.find(r => r.id === id);
+  if (req) { req.adminNote = note; saveDB(); await gsPush('updateRequest', {id, status:req.status, note}); }
 }
 
 // ── 庫存管理 ──
-function renderAdminInventory(){
-  const wrap=document.getElementById('admin-inv-content');wrap.innerHTML='';
-  Object.entries(EQUIP).forEach(([id,cfg])=>{
-    const items=DB.inventory.filter(i=>i.equipId===id);
-    wrap.innerHTML+=`<div class="inv-equip-title">${cfg.label}</div>`;
-    items.forEach(it=>{
-      const label=cfg.st==='none'?'數量':(it.spec||'數量');
-      wrap.innerHTML+=`<div class="inv-row">
+function renderAdminInventory() {
+  const wrap = document.getElementById('admin-inv-content'); wrap.innerHTML = '';
+  Object.entries(EQUIP).forEach(([id, cfg]) => {
+    wrap.innerHTML += `<div class="inv-equip-title">${cfg.label}</div>`;
+    const items = DB.inventory.filter(i => i.equipId === id);
+    items.forEach(it => {
+      const label = cfg.st === 'none' ? '數量' : it.spec;
+      wrap.innerHTML += `<div class="inv-row">
         <span class="inv-row-label">${label}</span>
-        <input class="inv-row-num" type="number" min="0" value="${it.stock}" id="inv-${it.specId}"
-          onchange="stockChanged('${it.specId}')">
+        <input class="inv-row-num" type="number" min="0" value="${it.stock}" id="inv-${it.specId}">
         <button class="btn-sm" onclick="saveStock('${it.specId}','${id}','${it.spec||''}','${cfg.label}')">儲存</button>
-        <span class="inv-saved-badge" id="saved-${it.specId}">✓ 已更新 <strong id="saved-num-${it.specId}"></strong></span>
+        <span class="inv-saved" id="saved-${it.specId}">✓ 已更新 <strong id="sn-${it.specId}"></strong></span>
       </div>`;
     });
   });
 }
 
-function stockChanged(specId){/* keep for future live preview */}
-
-async function saveStock(specId,equipId,spec,equipName){
-  const val=parseInt(document.getElementById('inv-'+specId).value)||0;
-  const item=DB.inventory.find(i=>i.specId===specId);
-  if(item){item.stock=val;item.updated=now();saveDB();renderStats();}
-  // Show badge
-  const badge=document.getElementById('saved-'+specId);
-  document.getElementById('saved-num-'+specId).textContent=val+' 件';
+async function saveStock(specId, equipId, spec, equipName) {
+  const val = parseInt(document.getElementById('inv-'+specId).value) || 0;
+  const item = DB.inventory.find(i => i.specId === specId);
+  if (item) { item.stock = val; item.updated = now(); saveDB(); renderStats(); }
+  const badge = document.getElementById('saved-'+specId);
+  document.getElementById('sn-'+specId).textContent = val + ' 件';
   badge.classList.add('show');
-  setTimeout(()=>badge.classList.remove('show'),2500);
-  await push('updateStock',{specId,equipName,spec,stock:val});
+  setTimeout(() => badge.classList.remove('show'), 2500);
+  await gsPush('updateStock', {specId, equipName, spec, stock:val});
 }
 
 // ══════════════════════════════════════════════
 //  LIGHTBOX
 // ══════════════════════════════════════════════
-function openLightbox(src){
-  document.getElementById('lightbox-img').src=src;
-  document.getElementById('lightbox').style.display='flex';
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'flex';
 }
-function closeLightbox(){document.getElementById('lightbox').style.display='none';}
+function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
 // ══════════════════════════════════════════════
 //  TOAST
 // ══════════════════════════════════════════════
 let tt;
-function showToast(msg,type='success'){
-  const t=document.getElementById('toast');
-  document.getElementById('toast-msg').textContent=msg;
-  t.className='toast show '+type;
-  clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),3500);
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.className = 'toast show '+type;
+  clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ══════════════════════════════════════════════
+//  COPY SCRIPT
+// ══════════════════════════════════════════════
+function copyScript() {
+  const code = document.getElementById('script-code').textContent;
+  navigator.clipboard.writeText(code).then(() => showToast('✅ 程式碼已複製','success')).catch(() => showToast('請手動複製程式碼','warning'));
 }
 </script>
 </body>
